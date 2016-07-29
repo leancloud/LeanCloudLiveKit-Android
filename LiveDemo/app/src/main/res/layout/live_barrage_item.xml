@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/live_barrage_item_bg"
+                android:orientation="vertical">
+
+    <com.daweibayu.livedemo.RoundCornerImageView
+        android:id="@+id/live_barrage_item_avatar_view"
+        android:layout_width="22dp"
+        android:layout_height="22dp"/>
+
+    <TextView
+        android:id="@+id/live_barrage_item_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/live_barrage_item_avatar_view"
+        android:text="name"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/live_barrage_item_content_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/live_barrage_item_name_view"
+        android:layout_toRightOf="@+id/live_barrage_item_avatar_view"
+        android:text="content"
+        android:textColor="@android:color/white"/>
+
+</RelativeLayout>
