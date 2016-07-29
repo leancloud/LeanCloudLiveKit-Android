@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <ImageView
+        android:id="@+id/live_im_personal_avatar_view"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/lcim_default_avatar_icon"/>
+
+    <TextView
+        android:id="@+id/live_im_personal_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/live_im_personal_avatar_view"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/live_im_personal_avatar_view"
+        android:text="name"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/live_im_personal_close_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="X"/>
+</RelativeLayout>

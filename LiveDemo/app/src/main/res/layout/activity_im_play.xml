@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+    <ScrollView
+        android:id="@+id/live_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <fragment
+            android:id="@+id/live_fragment"
+            android:name="com.daweibayu.livedemo.play.LivePlayFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </ScrollView>
+
+    <fragment
+        android:id="@+id/im_fragment"
+        android:name="com.daweibayu.livedemo.im.LiveIMFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</RelativeLayout>

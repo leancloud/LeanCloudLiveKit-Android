@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+    android:background="#121E34">
+
+    <LinearLayout
+        android:id="@+id/live_gift_action_layout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:textColor="@android:color/white"
+            android:text="number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="total"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/live_gift_gift_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/live_gift_action_layout"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/live_gift_dialog_gift_1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/gift_item_height"
+                android:drawableTop="@mipmap/gift_demo"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/gift_item_height"
+                android:drawableTop="@mipmap/gift_demo"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/gift_item_height"
+                android:drawableTop="@mipmap/gift_demo"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/gift_item_height"
+                android:drawableTop="@mipmap/gift_demo"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/gift_item_height"
+                android:drawableTop="@mipmap/gift_demo"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/gift_item_height"
+                android:drawableTop="@mipmap/gift_demo"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
