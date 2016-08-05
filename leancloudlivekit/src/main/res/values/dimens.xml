@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="gift_item_height">70dp</dimen>
+
+    <dimen name="live_gift_dialog_height">250dp</dimen>
+</resources>
