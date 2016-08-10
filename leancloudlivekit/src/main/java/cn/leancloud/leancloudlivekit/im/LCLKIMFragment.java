@@ -28,8 +28,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import cn.leancloud.leancloudlivekit.LCLiveKit;
-import cn.leancloud.leancloudlivekit.LCLiveKitProfilesCallBack;
-import cn.leancloud.leancloudlivekit.LCLiveKitUser;
+import cn.leancloud.leancloudlivekit.LCLKProfilesCallBack;
+import cn.leancloud.leancloudlivekit.LCLKUser;
 import cn.leancloud.leancloudlivekit.LiveGiftDialogFragment;
 import cn.leancloud.leancloudlivekit.R;
 import cn.leancloud.leancloudlivekit.barrage.BarrageLayout;
@@ -39,7 +39,7 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by wli on 16/8/4.
  */
-public class LCLiveKitIMFragment extends Fragment {
+public class LCLKIMFragment extends Fragment {
 
   /**
    * recyclerView 对应的 Adapter
@@ -172,9 +172,9 @@ public class LCLiveKitIMFragment extends Fragment {
 
   private void initAnchorInfo() {
     String clientId = LCLiveKit.getInstance().getCurrentUserId();
-    LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(clientId), new LCLiveKitProfilesCallBack() {
+    LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(clientId), new LCLKProfilesCallBack() {
       @Override
-      public void done(List<LCLiveKitUser> userList, Exception exception) {
+      public void done(List<LCLKUser> userList, Exception exception) {
         if (null == exception && null != userList && userList.size() > 0) {
           final String avatar = userList.get(0).getAvatarUrl();
           if (!TextUtils.isEmpty(avatar)) {
@@ -276,9 +276,9 @@ public class LCLiveKitIMFragment extends Fragment {
 
   private void sendGift(final String content) {
     LCLiveKit.getInstance().getProfileProvider().fetchProfiles(
-      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new LCLiveKitProfilesCallBack() {
+      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new LCLKProfilesCallBack() {
         @Override
-        public void done(List<LCLiveKitUser> userList, Exception exception) {
+        public void done(List<LCLKUser> userList, Exception exception) {
           if (exception == null && null != userList && userList.size() > 0) {
             final LiveGiftMessage message = new LiveGiftMessage();
             message.setMessageContent(content);
@@ -299,9 +299,9 @@ public class LCLiveKitIMFragment extends Fragment {
 
   private void sendBarrage(final String content) {
     LCLiveKit.getInstance().getProfileProvider().fetchProfiles(
-      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new LCLiveKitProfilesCallBack() {
+      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new LCLKProfilesCallBack() {
         @Override
-        public void done(List<LCLiveKitUser> userList, Exception exception) {
+        public void done(List<LCLKUser> userList, Exception exception) {
           if (exception == null && null != userList && userList.size() > 0) {
             final LiveBarrageMessage message = new LiveBarrageMessage();
             message.setMessageContent(content);
@@ -353,9 +353,9 @@ public class LCLiveKitIMFragment extends Fragment {
    */
   protected void sendText(final String content) {
     LCLiveKit.getInstance().getProfileProvider().fetchProfiles(
-      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new LCLiveKitProfilesCallBack() {
+      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new LCLKProfilesCallBack() {
         @Override
-        public void done(List<LCLiveKitUser> userList, Exception exception) {
+        public void done(List<LCLKUser> userList, Exception exception) {
           if (exception == null && null != userList && userList.size() > 0) {
             LCLiveIMMessage message = new LCLiveIMMessage();
             message.setMessageContent(content);

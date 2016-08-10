@@ -23,7 +23,7 @@ import cn.leancloud.leancloudlivekit.utils.LiveKitConstants;
 /**
  * Created by wli on 16/8/4.
  */
-public class LiveRecordFragment extends Fragment implements CameraStreamingManager.StreamingStateListener {
+public class LCLKRecordFragment extends Fragment implements CameraStreamingManager.StreamingStateListener {
 
   private CameraStreamingManager mediaStreamingManager;
   private CameraStreamingSetting cameraStreamingSetting;

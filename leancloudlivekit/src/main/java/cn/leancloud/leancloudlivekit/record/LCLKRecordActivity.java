@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Created by wli on 16/8/2.
  */
-public class LiveRecordActivity extends AppCompatActivity {
+public class LCLKRecordActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {

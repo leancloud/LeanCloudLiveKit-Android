@@ -3,12 +3,12 @@ package cn.leancloud.leancloudlivekit;
 /**
  * Created by wli on 16/8/4.
  */
-public final class LCLiveKitUser {
+public final class LCLKUser {
   private String userId;
   private String avatarUrl;
   private String name;
 
-  public LCLiveKitUser(String userId, String userName, String avatarUrl) {
+  public LCLKUser(String userId, String userName, String avatarUrl) {
     this.userId = userId;
     this.avatarUrl = avatarUrl;
     this.name = userName;

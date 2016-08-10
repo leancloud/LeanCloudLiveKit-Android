@@ -19,7 +19,7 @@ import cn.leancloud.leancloudlivekit.R;
 /**
  * Created by wli on 16/7/26.
  */
-public class LivePlayFragment extends Fragment {
+public class LCLKPlayFragment extends Fragment {
 
   public static final String LIVE_STREAM_PATH = "liveStreamPath";
 

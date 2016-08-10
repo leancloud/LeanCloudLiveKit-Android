@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface LCLiveKitProvider {
 
-  public void fetchProfiles(List<String> userIdList, LCLiveKitProfilesCallBack profilesCallBack);
+  public void fetchProfiles(List<String> userIdList, LCLKProfilesCallBack profilesCallBack);
 
 //  public void getStreamInfo(String conversationId, )
 }

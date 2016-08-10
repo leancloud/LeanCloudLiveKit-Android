@@ -105,9 +105,8 @@ public class LCLiveKit {
       public void done(final AVIMClient avimClient, AVIMException e) {
         if (null == e) {
           currentUserId = userId;
-        } else {
-          callback.internalDone(avimClient, e);
         }
+        callback.internalDone(avimClient, e);
       }
     });
   }
