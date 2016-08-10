@@ -1,4 +1,4 @@
-package cn.leancloud.leancloudlivekit;
+package cn.leancloud.leancloudlivekit.im;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,14 +10,14 @@ import android.widget.ImageView;
 /**
  * Created by wli on 16/7/26.
  */
-public class RoundCornerImageView extends ImageView {
-  public RoundCornerImageView(Context context) {
+public class LCLKRoundCornerImageView extends ImageView {
+  public LCLKRoundCornerImageView(Context context) {
     super(context);
   }
-  public RoundCornerImageView(Context context, AttributeSet attrs) {
+  public LCLKRoundCornerImageView(Context context, AttributeSet attrs) {
     super(context, attrs);
   }
-  public RoundCornerImageView(Context context, AttributeSet attrs, int defStyle) {
+  public LCLKRoundCornerImageView(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
   }
   @Override

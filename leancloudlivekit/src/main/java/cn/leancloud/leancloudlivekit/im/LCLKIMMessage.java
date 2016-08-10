@@ -8,8 +8,8 @@ import com.avos.avoscloud.im.v2.AVIMTypedMessage;
 /**
  * Created by wli on 16/7/22.
  */
-@AVIMMessageType(type = LCLiveIMMessage.LIVE_MESSAGE_TYPE)
-public class LCLiveIMMessage extends AVIMTypedMessage {
+@AVIMMessageType(type = LCLKIMMessage.LIVE_MESSAGE_TYPE)
+public class LCLKIMMessage extends AVIMTypedMessage {
 
   public static final int LIVE_MESSAGE_TYPE = 1001;
 
@@ -26,7 +26,7 @@ public class LCLiveIMMessage extends AVIMTypedMessage {
   @AVIMMessageField(name = LIVE_MESSAGE_CONTENT_KEY)
   private String messageContent;
 
-  public static final Creator<LCLiveIMMessage> CREATOR = new AVIMMessageCreator<LCLiveIMMessage>(LCLiveIMMessage.class);
+  public static final Creator<LCLKIMMessage> CREATOR = new AVIMMessageCreator<LCLKIMMessage>(LCLKIMMessage.class);
 
   public String getAvatar() {
     return avatar;

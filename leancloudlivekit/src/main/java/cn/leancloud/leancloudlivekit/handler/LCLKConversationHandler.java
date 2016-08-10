@@ -10,18 +10,18 @@ import java.util.List;
 /**
  * Created by wli on 16/8/4.
  */
-public class LCLiveKitConversationHandler extends AVIMConversationEventHandler {
+public class LCLKConversationHandler extends AVIMConversationEventHandler {
 
-  private static LCLiveKitConversationHandler eventHandler;
+  private static LCLKConversationHandler eventHandler;
 
-  public static synchronized LCLiveKitConversationHandler getInstance() {
+  public static synchronized LCLKConversationHandler getInstance() {
     if (null == eventHandler) {
-      eventHandler = new LCLiveKitConversationHandler();
+      eventHandler = new LCLKConversationHandler();
     }
     return eventHandler;
   }
 
-  private LCLiveKitConversationHandler() {
+  private LCLKConversationHandler() {
   }
 
   @Override

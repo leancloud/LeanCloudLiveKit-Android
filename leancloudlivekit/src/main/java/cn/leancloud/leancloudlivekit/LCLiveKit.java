@@ -12,9 +12,9 @@ import com.avos.avoscloud.im.v2.AVIMMessageManager;
 import com.avos.avoscloud.im.v2.AVIMTypedMessage;
 import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 
-import cn.leancloud.leancloudlivekit.handler.LCLiveKitClientEventHandler;
-import cn.leancloud.leancloudlivekit.handler.LCLiveKitConversationHandler;
-import cn.leancloud.leancloudlivekit.handler.LCLiveKitMessageHandler;
+import cn.leancloud.leancloudlivekit.handler.LCLKClientEventHandler;
+import cn.leancloud.leancloudlivekit.handler.LCLKConversationHandler;
+import cn.leancloud.leancloudlivekit.handler.LCLKMessageHandler;
 
 /**
  * Created by wli on 16/8/4.
@@ -53,13 +53,13 @@ public class LCLiveKit {
     AVOSCloud.initialize(context.getApplicationContext(), appId, appKey);
 
     // 消息处理 handler
-    AVIMMessageManager.registerMessageHandler(AVIMTypedMessage.class, new LCLiveKitMessageHandler(context));
+    AVIMMessageManager.registerMessageHandler(AVIMTypedMessage.class, new LCLKMessageHandler(context));
 
     // 与网络相关的 handler
-    AVIMClient.setClientEventHandler(LCLiveKitClientEventHandler.getInstance());
+    AVIMClient.setClientEventHandler(LCLKClientEventHandler.getInstance());
 
     // 和 Conversation 相关的事件的 handler
-    AVIMMessageManager.setConversationEventHandler(LCLiveKitConversationHandler.getInstance());
+    AVIMMessageManager.setConversationEventHandler(LCLKConversationHandler.getInstance());
 
     // 默认设置为离线消息仅推送数量
     AVIMClient.setOfflineMessagePush(true);

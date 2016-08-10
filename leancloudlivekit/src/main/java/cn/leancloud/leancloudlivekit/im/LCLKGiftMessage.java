@@ -7,8 +7,8 @@ import com.avos.avoscloud.im.v2.AVIMMessageType;
 /**
  * Created by wli on 16/7/26.
  */
-@AVIMMessageType(type = LiveGiftMessage.LIVE_GIFT_MESSAGE_TYPE)
-public class LiveGiftMessage extends LCLiveIMMessage {
+@AVIMMessageType(type = LCLKGiftMessage.LIVE_GIFT_MESSAGE_TYPE)
+public class LCLKGiftMessage extends LCLKIMMessage {
 
   public static final int LIVE_GIFT_MESSAGE_TYPE = 5002;
 
@@ -17,11 +17,11 @@ public class LiveGiftMessage extends LCLiveIMMessage {
   @AVIMMessageField(name = LIVE_GIFT_MESSAGE_NUMBER_KEY)
   private int number;
 
-  public LiveGiftMessage() {
+  public LCLKGiftMessage() {
     super();
   }
 
-  public static final Creator<LiveGiftMessage> CREATOR = new AVIMMessageCreator<LiveGiftMessage>(LiveGiftMessage.class);
+  public static final Creator<LCLKGiftMessage> CREATOR = new AVIMMessageCreator<LCLKGiftMessage>(LCLKGiftMessage.class);
 
   public int getNumber() {
     return number;

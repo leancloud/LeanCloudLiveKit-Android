@@ -8,7 +8,7 @@
               android:paddingRight="10dp"
               android:paddingTop="2dp">
 
-    <cn.leancloud.leancloudlivekit.RoundCornerImageView
+    <cn.leancloud.leancloudlivekit.im.LCLKRoundCornerImageView
         android:id="@+id/im_chat_item_text_avatar_view"
         android:layout_width="22dp"
         android:layout_height="22dp"/>

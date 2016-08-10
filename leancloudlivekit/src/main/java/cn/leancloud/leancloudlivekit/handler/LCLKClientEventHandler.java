@@ -3,23 +3,21 @@ package cn.leancloud.leancloudlivekit.handler;
 import com.avos.avoscloud.im.v2.AVIMClient;
 import com.avos.avoscloud.im.v2.AVIMClientEventHandler;
 
-import de.greenrobot.event.EventBus;
-
 /**
  * Created by wli on 16/8/4.
  */
-public class LCLiveKitClientEventHandler extends AVIMClientEventHandler {
+public class LCLKClientEventHandler extends AVIMClientEventHandler {
 
-  private static LCLiveKitClientEventHandler eventHandler;
+  private static LCLKClientEventHandler eventHandler;
 
-  public static synchronized LCLiveKitClientEventHandler getInstance() {
+  public static synchronized LCLKClientEventHandler getInstance() {
     if (null == eventHandler) {
-      eventHandler = new LCLiveKitClientEventHandler();
+      eventHandler = new LCLKClientEventHandler();
     }
     return eventHandler;
   }
 
-  private LCLiveKitClientEventHandler() {
+  private LCLKClientEventHandler() {
   }
 
 

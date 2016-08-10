@@ -5,7 +5,7 @@
                 android:background="@drawable/live_barrage_item_bg"
                 android:orientation="vertical">
 
-    <cn.leancloud.leancloudlivekit.RoundCornerImageView
+    <cn.leancloud.leancloudlivekit.im.LCLKRoundCornerImageView
         android:id="@+id/live_barrage_item_avatar_view"
         android:layout_width="22dp"
         android:layout_height="22dp"/>

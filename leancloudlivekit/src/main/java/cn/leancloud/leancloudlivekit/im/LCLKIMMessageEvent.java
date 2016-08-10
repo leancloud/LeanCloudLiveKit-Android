@@ -6,7 +6,7 @@ import com.avos.avoscloud.im.v2.AVIMTypedMessage;
 /**
  * Created by wli on 16/8/4.
  */
-public class LCLiveKitIMMessageEvent {
+public class LCLKIMMessageEvent {
   public AVIMTypedMessage message;
   public AVIMConversation conversation;
 }

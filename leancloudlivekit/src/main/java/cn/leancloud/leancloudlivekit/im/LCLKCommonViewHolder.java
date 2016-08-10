@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 /**
  * Created by wli on 16/8/4.
  */
-public abstract class LCLiveKitCommonViewHolder<T> extends RecyclerView.ViewHolder {
+public abstract class LCLKCommonViewHolder<T> extends RecyclerView.ViewHolder {
 
-  public LCLiveKitCommonViewHolder(Context context, ViewGroup root, int layoutRes) {
+  public LCLKCommonViewHolder(Context context, ViewGroup root, int layoutRes) {
     super(LayoutInflater.from(context).inflate(layoutRes, root, false));
   }
 
@@ -36,7 +36,7 @@ public abstract class LCLiveKitCommonViewHolder<T> extends RecyclerView.ViewHold
    *
    * @param <VH>
    */
-  public interface ViewHolderCreator<VH extends LCLiveKitCommonViewHolder> {
+  public interface ViewHolderCreator<VH extends LCLKCommonViewHolder> {
     public VH createByViewGroupAndType(ViewGroup parent, int viewType);
   }
 }

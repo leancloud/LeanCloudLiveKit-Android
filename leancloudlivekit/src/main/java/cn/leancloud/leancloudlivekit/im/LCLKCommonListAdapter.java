@@ -10,19 +10,19 @@ import java.util.List;
 /**
  * Created by wli on 16/8/4.
  */
-public class LCLiveKitCommonListAdapter<T> extends RecyclerView.Adapter<LCLiveKitCommonViewHolder> {
+public class LCLKCommonListAdapter<T> extends RecyclerView.Adapter<LCLKCommonViewHolder> {
 
-  private static HashMap<String, LCLiveKitCommonViewHolder.ViewHolderCreator> creatorHashMap = new HashMap<>();
+  private static HashMap<String, LCLKCommonViewHolder.ViewHolderCreator> creatorHashMap = new HashMap<>();
 
   private Class<?> vhClass;
 
   protected List<T> dataList = new ArrayList<T>();
 
-  public LCLiveKitCommonListAdapter() {
+  public LCLKCommonListAdapter() {
     super();
   }
 
-  public LCLiveKitCommonListAdapter(Class<?> vhClass) {
+  public LCLKCommonListAdapter(Class<?> vhClass) {
     this.vhClass = vhClass;
   }
 
@@ -57,7 +57,7 @@ public class LCLiveKitCommonListAdapter<T> extends RecyclerView.Adapter<LCLiveKi
   }
 
   @Override
-  public LCLiveKitCommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public LCLKCommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (null == vhClass) {
       try {
         throw new IllegalArgumentException("please use CommonListAdapter(Class<VH> vhClass)");
@@ -65,12 +65,12 @@ public class LCLiveKitCommonListAdapter<T> extends RecyclerView.Adapter<LCLiveKi
       }
     }
 
-    LCLiveKitCommonViewHolder.ViewHolderCreator<?> creator = null;
+    LCLKCommonViewHolder.ViewHolderCreator<?> creator = null;
     if (creatorHashMap.containsKey(vhClass.getName())) {
       creator = creatorHashMap.get(vhClass.getName());
     } else {
       try {
-        creator = (LCLiveKitCommonViewHolder.ViewHolderCreator) vhClass.getField("HOLDER_CREATOR").get(null);
+        creator = (LCLKCommonViewHolder.ViewHolderCreator) vhClass.getField("HOLDER_CREATOR").get(null);
         creatorHashMap.put(vhClass.getName(), creator);
       } catch (IllegalAccessException e) {
       } catch (NoSuchFieldException e) {
@@ -84,7 +84,7 @@ public class LCLiveKitCommonListAdapter<T> extends RecyclerView.Adapter<LCLiveKi
   }
 
   @Override
-  public void onBindViewHolder(LCLiveKitCommonViewHolder holder, int position) {
+  public void onBindViewHolder(LCLKCommonViewHolder holder, int position) {
     if (position >= 0 && position < dataList.size()) {
       holder.bindData(dataList.get(position));
     }

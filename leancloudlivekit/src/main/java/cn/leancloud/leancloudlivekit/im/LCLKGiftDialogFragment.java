@@ -1,4 +1,4 @@
-package cn.leancloud.leancloudlivekit;
+package cn.leancloud.leancloudlivekit.im;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -17,16 +17,18 @@ import android.view.WindowManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.leancloud.leancloudlivekit.R;
+
 /**
  * Created by wli on 16/7/22.
  */
-public class LiveGiftDialogFragment extends DialogFragment {
+public class LCLKGiftDialogFragment extends DialogFragment {
 
   GridLayout currentLayout = null;
 
   ViewPager viewPager;
 
-  LiveGiftPagerAdapter pagerAdapter;
+  LCLKGiftPagerAdapter pagerAdapter;
 
   List<View> giftViewList = new ArrayList<>();
 
@@ -56,7 +58,7 @@ public class LiveGiftDialogFragment extends DialogFragment {
 
     viewPager = (ViewPager) dialog.findViewById(R.id.lift_gift_dialog_pager);
 
-    pagerAdapter = new LiveGiftPagerAdapter();
+    pagerAdapter = new LCLKGiftPagerAdapter();
     viewPager.setAdapter(pagerAdapter);
 
     // 设置宽度为屏宽, 靠近屏幕底部。

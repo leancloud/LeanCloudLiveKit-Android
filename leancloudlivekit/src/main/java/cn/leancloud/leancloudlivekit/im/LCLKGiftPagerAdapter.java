@@ -1,4 +1,4 @@
-package cn.leancloud.leancloudlivekit;
+package cn.leancloud.leancloudlivekit.im;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
@@ -11,11 +11,11 @@ import java.util.List;
 /**
  * Created by wli on 16/8/3.
  */
-public class LiveGiftPagerAdapter extends PagerAdapter {
+public class LCLKGiftPagerAdapter extends PagerAdapter {
 
   protected List<View> viewList = new ArrayList<View>();
 
-  public LiveGiftPagerAdapter() {
+  public LCLKGiftPagerAdapter() {
   }
 
   public void setViewList(List<View> views) {

@@ -30,7 +30,6 @@ import java.util.List;
 import cn.leancloud.leancloudlivekit.LCLiveKit;
 import cn.leancloud.leancloudlivekit.LCLKProfilesCallBack;
 import cn.leancloud.leancloudlivekit.LCLKUser;
-import cn.leancloud.leancloudlivekit.LiveGiftDialogFragment;
 import cn.leancloud.leancloudlivekit.R;
 import cn.leancloud.leancloudlivekit.barrage.BarrageLayout;
 import cn.leancloud.leancloudlivekit.utils.LiveKitConstants;
@@ -44,7 +43,7 @@ public class LCLKIMFragment extends Fragment {
   /**
    * recyclerView 对应的 Adapter
    */
-  protected LCLiveKitChatAdapter itemAdapter;
+  protected LCLKChatAdapter itemAdapter;
   protected LinearLayoutManager layoutManager;
   protected AVIMConversation imConversation;
 
@@ -191,7 +190,7 @@ public class LCLKIMFragment extends Fragment {
     layoutManager = new LinearLayoutManager(getContext());
     recyclerView.setLayoutManager(layoutManager);
 
-    itemAdapter = new LCLiveKitChatAdapter();
+    itemAdapter = new LCLKChatAdapter();
     recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
       @Override
       public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -221,7 +220,7 @@ public class LCLKIMFragment extends Fragment {
   }
 
   private void onGiftClick() {
-    LiveGiftDialogFragment giftDialogFragment = new LiveGiftDialogFragment();
+    LCLKGiftDialogFragment giftDialogFragment = new LCLKGiftDialogFragment();
     View giftItem = getActivity().getLayoutInflater().inflate(R.layout.live_gift_item, null);
     giftItem.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -248,15 +247,15 @@ public class LCLKIMFragment extends Fragment {
    * 处理推送过来的消息
    * 同理，避免无效消息，此处加了 conversation id 判断
    */
-  public void onEvent(LCLiveKitIMMessageEvent messageEvent) {
+  public void onEvent(LCLKIMMessageEvent messageEvent) {
     if (null != imConversation && null != messageEvent &&
       imConversation.getConversationId().equals(messageEvent.conversation.getConversationId())) {
-      if (messageEvent.message instanceof LiveBarrageMessage) {
-        addBarrage((LiveBarrageMessage) messageEvent.message);
-      } else if (messageEvent.message instanceof LiveGiftMessage) {
-        addGiftBarrage((LiveGiftMessage) messageEvent.message);
-      } else if (messageEvent.message instanceof LCLiveIMMessage) {
-        itemAdapter.addDataList(Arrays.asList((LCLiveIMMessage) messageEvent.message));
+      if (messageEvent.message instanceof LCLKIMBarrageMessage) {
+        addBarrage((LCLKIMBarrageMessage) messageEvent.message);
+      } else if (messageEvent.message instanceof LCLKGiftMessage) {
+        addGiftBarrage((LCLKGiftMessage) messageEvent.message);
+      } else if (messageEvent.message instanceof LCLKIMMessage) {
+        itemAdapter.addDataList(Arrays.asList((LCLKIMMessage) messageEvent.message));
         itemAdapter.notifyDataSetChanged();
         if (isBottom) {
           scrollToBottom();
@@ -280,7 +279,7 @@ public class LCLKIMFragment extends Fragment {
         @Override
         public void done(List<LCLKUser> userList, Exception exception) {
           if (exception == null && null != userList && userList.size() > 0) {
-            final LiveGiftMessage message = new LiveGiftMessage();
+            final LCLKGiftMessage message = new LCLKGiftMessage();
             message.setMessageContent(content);
             message.setName(userList.get(0).getUserName());
             message.setAvatar(userList.get(0).getAvatarUrl());
@@ -303,7 +302,7 @@ public class LCLKIMFragment extends Fragment {
         @Override
         public void done(List<LCLKUser> userList, Exception exception) {
           if (exception == null && null != userList && userList.size() > 0) {
-            final LiveBarrageMessage message = new LiveBarrageMessage();
+            final LCLKIMBarrageMessage message = new LCLKIMBarrageMessage();
             message.setMessageContent(content);
             message.setName(userList.get(0).getUserName());
             message.setAvatar(userList.get(0).getAvatarUrl());
@@ -319,7 +318,7 @@ public class LCLKIMFragment extends Fragment {
     );
   }
 
-  private void addBarrage(LiveBarrageMessage message) {
+  private void addBarrage(LCLKIMBarrageMessage message) {
     View view = getActivity().getLayoutInflater().inflate(R.layout.live_barrage_item, null);
     ImageView avatarView = (ImageView) view.findViewById(R.id.live_barrage_item_avatar_view);
     TextView nameView = (TextView) view.findViewById(R.id.live_barrage_item_name_view);
@@ -331,7 +330,7 @@ public class LCLKIMFragment extends Fragment {
     barrageLayout.sendView(view);
   }
 
-  private void addGiftBarrage(LiveGiftMessage message) {
+  private void addGiftBarrage(LCLKGiftMessage message) {
     View view = getActivity().getLayoutInflater().inflate(R.layout.live_barrage_gift_item, null);
     ImageView avatarView = (ImageView) view.findViewById(R.id.live_barrage_gift_icon_view);
     TextView nameView = (TextView) view.findViewById(R.id.live_barrage_gift_name_view);
@@ -357,7 +356,7 @@ public class LCLKIMFragment extends Fragment {
         @Override
         public void done(List<LCLKUser> userList, Exception exception) {
           if (exception == null && null != userList && userList.size() > 0) {
-            LCLiveIMMessage message = new LCLiveIMMessage();
+            LCLKIMMessage message = new LCLKIMMessage();
             message.setMessageContent(content);
             message.setName(userList.get(0).getUserName());
             message.setAvatar(userList.get(0).getAvatarUrl());

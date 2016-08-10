@@ -7,17 +7,17 @@ import com.avos.avoscloud.im.v2.AVIMTypedMessage;
 import com.avos.avoscloud.im.v2.AVIMTypedMessageHandler;
 
 import cn.leancloud.leancloudlivekit.LCLiveKit;
-import cn.leancloud.leancloudlivekit.im.LCLiveKitIMMessageEvent;
+import cn.leancloud.leancloudlivekit.im.LCLKIMMessageEvent;
 import de.greenrobot.event.EventBus;
 
 /**
  * Created by wli on 16/8/4.
  */
-public class LCLiveKitMessageHandler extends AVIMTypedMessageHandler<AVIMTypedMessage> {
+public class LCLKMessageHandler extends AVIMTypedMessageHandler<AVIMTypedMessage> {
 
   private Context context;
 
-  public LCLiveKitMessageHandler(Context context) {
+  public LCLKMessageHandler(Context context) {
     this.context = context.getApplicationContext();
   }
 
@@ -52,7 +52,7 @@ public class LCLiveKitMessageHandler extends AVIMTypedMessageHandler<AVIMTypedMe
    * @param conversation
    */
   private void sendEvent(AVIMTypedMessage message, AVIMConversation conversation) {
-    LCLiveKitIMMessageEvent event = new LCLiveKitIMMessageEvent();
+    LCLKIMMessageEvent event = new LCLKIMMessageEvent();
     event.message = message;
     event.conversation = conversation;
     EventBus.getDefault().post(event);

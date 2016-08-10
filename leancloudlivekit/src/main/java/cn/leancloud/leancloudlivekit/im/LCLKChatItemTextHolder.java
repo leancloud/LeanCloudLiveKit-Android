@@ -13,13 +13,13 @@ import cn.leancloud.leancloudlivekit.R;
 /**
  * Created by wli on 16/8/4.
  */
-public class LCLiveKitChatItemTextHolder extends LCLiveKitCommonViewHolder<LCLiveIMMessage> {
+public class LCLKChatItemTextHolder extends LCLKCommonViewHolder<LCLKIMMessage> {
 
   private ImageView avatarView;
   private TextView nameView;
   private TextView contentView;
 
-  public LCLiveKitChatItemTextHolder(Context context, ViewGroup root) {
+  public LCLKChatItemTextHolder(Context context, ViewGroup root) {
     super(context, root, R.layout.im_chat_item_text_layout);
     initView();
   }
@@ -30,23 +30,23 @@ public class LCLiveKitChatItemTextHolder extends LCLiveKitCommonViewHolder<LCLiv
     nameView = (TextView) itemView.findViewById(R.id.im_chat_item_text_name_view);
   }
 
-  public static ViewHolderCreator HOLDER_CREATOR = new ViewHolderCreator<LCLiveKitChatItemTextHolder>() {
+  public static ViewHolderCreator HOLDER_CREATOR = new ViewHolderCreator<LCLKChatItemTextHolder>() {
     @Override
-    public LCLiveKitChatItemTextHolder createByViewGroupAndType(ViewGroup parent, int viewType) {
-      return new LCLiveKitChatItemTextHolder(parent.getContext(), parent);
+    public LCLKChatItemTextHolder createByViewGroupAndType(ViewGroup parent, int viewType) {
+      return new LCLKChatItemTextHolder(parent.getContext(), parent);
     }
   };
 
   @Override
-  public void bindData(LCLiveIMMessage lcLiveIMMessage) {
-    if (null != lcLiveIMMessage) {
-      if (!TextUtils.isEmpty(lcLiveIMMessage.getName())) {
-        nameView.setText(lcLiveIMMessage.getName());
+  public void bindData(LCLKIMMessage LCLKIMMessage) {
+    if (null != LCLKIMMessage) {
+      if (!TextUtils.isEmpty(LCLKIMMessage.getName())) {
+        nameView.setText(LCLKIMMessage.getName());
       }
-      if (!TextUtils.isEmpty(lcLiveIMMessage.getAvatar())) {
-        Picasso.with(getContext()).load(lcLiveIMMessage.getAvatar()).placeholder(R.mipmap.lcim_default_avatar_icon).into(avatarView);
+      if (!TextUtils.isEmpty(LCLKIMMessage.getAvatar())) {
+        Picasso.with(getContext()).load(LCLKIMMessage.getAvatar()).placeholder(R.mipmap.lcim_default_avatar_icon).into(avatarView);
       }
-      contentView.setText(lcLiveIMMessage.getMessageContent());
+      contentView.setText(LCLKIMMessage.getMessageContent());
     } else {
       nameView.setText("");
       avatarView.setImageResource(R.mipmap.lcim_default_avatar_icon);
