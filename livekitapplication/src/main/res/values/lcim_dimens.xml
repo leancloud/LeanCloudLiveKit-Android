@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="lcim_setting_item_height">60dp</dimen>
+
+    <dimen name="lcim_divider_line_height">1px</dimen>
+
+    <!-- badge -->
+    <dimen name="lcim_badge_radius">5dp</dimen>
+    <dimen name="lcim_badge_padding">3dp</dimen>
+    <dimen name="lcim_badge_stroke_width">1dp</dimen>
+</resources>

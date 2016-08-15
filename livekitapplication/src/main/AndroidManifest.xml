@@ -6,15 +6,23 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".LiveKitApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>>
+
+        <activity android:name=".LiveRoomListActivity"
+            android:label="@string/lclk_live_room"/>
+
+        <activity android:name=".LiveRoomCreateActivity"
+                  android:windowSoftInputMode="stateHidden"
+            android:label="@string/lclk_start_live"/>
     </application>
 
 </manifest>

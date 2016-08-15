@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="LCLKDividerLine">
+        <item name="android:background">#979797</item>
+    </style>
+
+    <style name="LCLKDividerLine.Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
+    <style name="LCLKDividerLine.Vertical">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">1dp</item>
+    </style>
 </resources>

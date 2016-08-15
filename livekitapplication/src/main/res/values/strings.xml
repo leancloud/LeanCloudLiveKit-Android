@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">livekitapplication</string>
+    
+    <string name="lclk_live_room">直播间</string>
+
+    <string name="lclk_start_live">开始直播</string>
 </resources>
