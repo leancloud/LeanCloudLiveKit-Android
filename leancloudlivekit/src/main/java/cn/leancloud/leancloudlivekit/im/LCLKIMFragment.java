@@ -32,7 +32,6 @@ import cn.leancloud.leancloudlivekit.LCLKProfilesCallBack;
 import cn.leancloud.leancloudlivekit.LCLKUser;
 import cn.leancloud.leancloudlivekit.R;
 import cn.leancloud.leancloudlivekit.barrage.BarrageLayout;
-import cn.leancloud.leancloudlivekit.utils.LiveKitConstants;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -69,7 +68,6 @@ public class LCLKIMFragment extends Fragment {
     View view = inflater.inflate(R.layout.live_im_fragment, container, false);
     initView(view);
     EventBus.getDefault().register(this);
-
     getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     return view;
   }
@@ -130,8 +128,6 @@ public class LCLKIMFragment extends Fragment {
     initAnchorInfo();
     initIMView();
 
-    initConversation();
-
     inputView.addTextChangedListener(new TextWatcher() {
       @Override
       public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -154,19 +150,14 @@ public class LCLKIMFragment extends Fragment {
     });
   }
 
-  private void initConversation() {
-    if (getActivity().getIntent().hasExtra(LiveKitConstants.LIVE_CONVERSATION_KEY)) {
-      String conversationId = getActivity().getIntent().getStringExtra(LiveKitConstants.LIVE_CONVERSATION_KEY);
-      imConversation = LCLiveKit.getInstance().getClient().getConversation(conversationId);
-      imConversation.join(new AVIMConversationCallback() {
-        @Override
-        public void done(AVIMException e) {
+  public void setConversation(final AVIMConversation conversation) {
+    imConversation = conversation;
+    imConversation.join(new AVIMConversationCallback() {
+      @Override
+      public void done(AVIMException e) {
 
-        }
-      });
-    } else {
-      getActivity().finish();
-    }
+      }
+    });
   }
 
   private void initAnchorInfo() {

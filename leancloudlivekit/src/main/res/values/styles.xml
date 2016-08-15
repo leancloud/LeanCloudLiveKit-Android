@@ -13,4 +13,21 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
+
+    <style name="LCIMTextAppearance"/>
+
+    <style name="LCIMTextAppearance.Large">
+        <item name="android:textSize">@dimen/lclk_textsize_large</item>
+    </style>
+
+    <style name="LCIMTextAppearance.Normal">
+        <item name="android:textSize">@dimen/lclk_textsize_normal</item>
+    </style>
+
+    <style name="LCIMTextAppearance.Normal.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="LCIMTextAppearance.Small"/>
 </resources>

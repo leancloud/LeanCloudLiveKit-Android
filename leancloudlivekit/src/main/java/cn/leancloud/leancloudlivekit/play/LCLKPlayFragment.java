@@ -3,6 +3,7 @@ package cn.leancloud.leancloudlivekit.play;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 import com.pili.pldroid.player.widget.PLVideoView;
+
 import cn.leancloud.leancloudlivekit.R;
 
 /**
@@ -21,50 +23,53 @@ import cn.leancloud.leancloudlivekit.R;
  */
 public class LCLKPlayFragment extends Fragment {
 
-  public static final String LIVE_STREAM_PATH = "liveStreamPath";
-
   PLVideoTextureView videoTextureView;
 
   LinearLayout loadingLayout;
 
+  private String livePath = "";
+
   @Nullable
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.live_play_fragment, container, false);
-    initView(view);
-    return view;
+    return inflater.inflate(R.layout.live_play_fragment, container, false);
   }
 
-  private void initView(View view) {
-    videoTextureView = (PLVideoTextureView) view.findViewById(R.id.live_play_video_textrue_view);
-    loadingLayout = (LinearLayout) view.findViewById(R.id.live_play_loading_layout);
+  // TODO 根据 liveId 获取直播地址
+  public void initLive(String liveId) {
+    livePath = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+    startLive();
   }
 
   @Override
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+    videoTextureView = (PLVideoTextureView) view.findViewById(R.id.live_play_video_textrue_view);
+    loadingLayout = (LinearLayout) view.findViewById(R.id.live_play_loading_layout);
 
     getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     videoTextureView.setBufferingIndicator(loadingLayout);
+  }
 
-    String videoPath = getActivity().getIntent().getStringExtra(LIVE_STREAM_PATH);
+  private void startLive() {
+    if (!TextUtils.isEmpty(livePath) && null != videoTextureView) {
+      AVOptions options = new AVOptions();
 
-    AVOptions options = new AVOptions();
-
-    // the unit of timeout is ms
-    options.setInteger(AVOptions.KEY_PREPARE_TIMEOUT, 10 * 1000);
-    options.setInteger(AVOptions.KEY_GET_AV_FRAME_TIMEOUT, 10 * 1000);
-    options.setInteger(AVOptions.KEY_LIVE_STREAMING, 1);
-    options.setInteger(AVOptions.KEY_DELAY_OPTIMIZATION, 1);
-    options.setInteger(AVOptions.KEY_MEDIACODEC, 0);
-    options.setInteger(AVOptions.KEY_START_ON_PREPARED, 0);
-    videoTextureView.setAVOptions(options);
-    videoTextureView.setDisplayAspectRatio(PLVideoView.ASPECT_RATIO_PAVED_PARENT);
-    videoTextureView.setKeepScreenOn(true);
-    videoTextureView.setOnCompletionListener(mOnCompletionListener);
-    videoTextureView.setOnErrorListener(mOnErrorListener);
-    videoTextureView.setVideoPath(videoPath);
-    videoTextureView.start();
+      // the unit of timeout is ms
+      options.setInteger(AVOptions.KEY_PREPARE_TIMEOUT, 10 * 1000);
+      options.setInteger(AVOptions.KEY_GET_AV_FRAME_TIMEOUT, 10 * 1000);
+      options.setInteger(AVOptions.KEY_LIVE_STREAMING, 1);
+      options.setInteger(AVOptions.KEY_DELAY_OPTIMIZATION, 1);
+      options.setInteger(AVOptions.KEY_MEDIACODEC, 0);
+      options.setInteger(AVOptions.KEY_START_ON_PREPARED, 0);
+      videoTextureView.setAVOptions(options);
+      videoTextureView.setDisplayAspectRatio(PLVideoView.ASPECT_RATIO_PAVED_PARENT);
+      videoTextureView.setKeepScreenOn(true);
+      videoTextureView.setOnCompletionListener(mOnCompletionListener);
+      videoTextureView.setOnErrorListener(mOnErrorListener);
+      videoTextureView.setVideoPath(livePath);
+      videoTextureView.start();
+    }
   }
 
   private PLMediaPlayer.OnErrorListener mOnErrorListener = new PLMediaPlayer.OnErrorListener() {

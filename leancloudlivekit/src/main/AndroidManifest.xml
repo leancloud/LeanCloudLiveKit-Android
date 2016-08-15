@@ -28,6 +28,9 @@
         </receiver>
 
         <service android:name="com.avos.avoscloud.PushService"/>
+
+        <activity android:name=".play.LCLKPlayActivity"/>
+        <activity android:name=".record.LCLKRecordActivity"/>
     </application>
 
 </manifest>

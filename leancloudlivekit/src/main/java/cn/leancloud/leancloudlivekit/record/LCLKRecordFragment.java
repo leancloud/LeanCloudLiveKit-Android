@@ -18,7 +18,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.leancloud.leancloudlivekit.R;
-import cn.leancloud.leancloudlivekit.utils.LiveKitConstants;
 
 /**
  * Created by wli on 16/8/4.
@@ -29,27 +28,30 @@ public class LCLKRecordFragment extends Fragment implements CameraStreamingManag
   private CameraStreamingSetting cameraStreamingSetting;
   private View mView;
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-  }
+  private String liveId;
 
   @Override
   public void onResume() {
     super.onResume();
-    mediaStreamingManager.resume();
+    if (null != mediaStreamingManager) {
+      mediaStreamingManager.resume();
+    }
   }
 
   @Override
   public void onPause() {
     super.onPause();
-    mediaStreamingManager.pause();
+    if (null != mediaStreamingManager) {
+      mediaStreamingManager.pause();
+    }
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
-    mediaStreamingManager.destroy();
+    if (null != mediaStreamingManager) {
+      mediaStreamingManager.destroy();
+    }
   }
 
   @Override
@@ -69,14 +71,8 @@ public class LCLKRecordFragment extends Fragment implements CameraStreamingManag
     mediaStreamingManager = new CameraStreamingManager(getActivity(), aspectFrameLayout, glSurfaceView,
       CameraStreamingManager.EncodingType.SW_VIDEO_WITH_SW_AUDIO_CODEC);
     mediaStreamingManager.setStreamingStateListener(this);
-
     cameraStreamingSetting = getCameraSetting();
-
-    if (null != getActivity().getIntent() && getActivity().getIntent().hasExtra(LiveKitConstants.LIVE_RECORD_STREAM_KEY)) {
-      String recordStream = getActivity().getIntent().getStringExtra(LiveKitConstants.LIVE_RECORD_STREAM_KEY);
-      initStream(recordStream);
-      startRecord();
-    }
+    setStream("");
   }
 
   @Override
@@ -121,11 +117,16 @@ public class LCLKRecordFragment extends Fragment implements CameraStreamingManag
     }
   }
 
-  public void initStream(String recordStream) {
+  public void setStream(String recordStream) {
+    initStream(recordStream);
     if (!TextUtils.isEmpty(recordStream)) {
-      StreamingProfile streamingProfile = getSreamingProfile(recordStream);
-      mediaStreamingManager.prepare(cameraStreamingSetting, null, null, streamingProfile);
+      startRecord();
     }
+  }
+
+  private void initStream(String recordStream) {
+    StreamingProfile streamingProfile = getSreamingProfile(recordStream);
+    mediaStreamingManager.prepare(cameraStreamingSetting, null, null, streamingProfile);
   }
 
   private CameraStreamingSetting getCameraSetting() {
