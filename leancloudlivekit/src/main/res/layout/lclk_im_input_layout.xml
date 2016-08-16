@@ -17,7 +17,7 @@
             android:layout_height="35dp"
             android:background="@drawable/live_im_gift_bg"
             android:clickable="true"
-            android:drawableLeft="@mipmap/star"
+            android:drawableLeft="@mipmap/lclk_star"
             android:drawablePadding="5dp"
             android:text="礼物"
             android:paddingLeft="5dp"

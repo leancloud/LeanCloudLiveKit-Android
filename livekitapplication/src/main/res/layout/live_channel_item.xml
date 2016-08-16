@@ -34,7 +34,7 @@
             android:layout_alignBottom="@+id/live_channle_item_bg_view"
             android:layout_marginBottom="-10dp"
             android:layout_marginLeft="10dp"
-            android:src="@mipmap/lcim_default_avatar_icon"/>
+            android:src="@mipmap/lclk_default_avatar_icon"/>
 
         <TextView
             android:id="@+id/live_channle_item_name_view"

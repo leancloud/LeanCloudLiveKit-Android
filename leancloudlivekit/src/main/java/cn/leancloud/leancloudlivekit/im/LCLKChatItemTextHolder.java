@@ -20,7 +20,7 @@ public class LCLKChatItemTextHolder extends LCLKCommonViewHolder<LCLKIMMessage> 
   private TextView contentView;
 
   public LCLKChatItemTextHolder(Context context, ViewGroup root) {
-    super(context, root, R.layout.im_chat_item_text_layout);
+    super(context, root, R.layout.lclk_im_chat_item_text_layout);
     initView();
   }
 
@@ -44,12 +44,12 @@ public class LCLKChatItemTextHolder extends LCLKCommonViewHolder<LCLKIMMessage> 
         nameView.setText(LCLKIMMessage.getName());
       }
       if (!TextUtils.isEmpty(LCLKIMMessage.getAvatar())) {
-        Picasso.with(getContext()).load(LCLKIMMessage.getAvatar()).placeholder(R.mipmap.lcim_default_avatar_icon).into(avatarView);
+        Picasso.with(getContext()).load(LCLKIMMessage.getAvatar()).placeholder(R.mipmap.lclk_default_avatar_icon).into(avatarView);
       }
       contentView.setText(LCLKIMMessage.getMessageContent());
     } else {
       nameView.setText("");
-      avatarView.setImageResource(R.mipmap.lcim_default_avatar_icon);
+      avatarView.setImageResource(R.mipmap.lclk_default_avatar_icon);
       contentView.setText("");
     }
   }

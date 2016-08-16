@@ -56,7 +56,7 @@ public class LCLKRecordFragment extends Fragment implements CameraStreamingManag
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-    mView = inflater.inflate(R.layout.live_record_fragment, parent, false);
+    mView = inflater.inflate(R.layout.lclk_record_fragment, parent, false);
     return mView;
   }
 

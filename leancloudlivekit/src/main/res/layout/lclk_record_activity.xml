@@ -14,11 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="cn.leancloud.leancloudlivekit.record.LCLKRecordFragment"/>
-        <!--<fragment-->
-            <!--android:id="@+id/lclk_record_fragment"-->
-            <!--android:name="cn.leancloud.leancloudlivekit.record.CameraStreamingFragment"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"/>-->
     </ScrollView>
 
     <fragment

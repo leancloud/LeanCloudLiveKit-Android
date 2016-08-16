@@ -52,7 +52,7 @@ public class LCLKGiftDialogFragment extends DialogFragment {
     Dialog dialog = new Dialog(getActivity(), R.style.BottomDialog);
 
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 设置Content前设定
-    dialog.setContentView(R.layout.live_gift_dialog);
+    dialog.setContentView(R.layout.lclk_gift_dialog);
     dialog.setCanceledOnTouchOutside(true); // 外部点击取消
     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 

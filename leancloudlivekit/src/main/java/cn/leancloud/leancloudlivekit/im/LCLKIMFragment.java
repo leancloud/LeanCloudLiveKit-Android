@@ -65,7 +65,7 @@ public class LCLKIMFragment extends Fragment {
   @Nullable
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.live_im_fragment, container, false);
+    View view = inflater.inflate(R.layout.lclk_im_fragment, container, false);
     initView(view);
     EventBus.getDefault().register(this);
     getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -212,7 +212,7 @@ public class LCLKIMFragment extends Fragment {
 
   private void onGiftClick() {
     LCLKGiftDialogFragment giftDialogFragment = new LCLKGiftDialogFragment();
-    View giftItem = getActivity().getLayoutInflater().inflate(R.layout.live_gift_item, null);
+    View giftItem = getActivity().getLayoutInflater().inflate(R.layout.lclk_gift_item, null);
     giftItem.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -310,7 +310,7 @@ public class LCLKIMFragment extends Fragment {
   }
 
   private void addBarrage(LCLKIMBarrageMessage message) {
-    View view = getActivity().getLayoutInflater().inflate(R.layout.live_barrage_item, null);
+    View view = getActivity().getLayoutInflater().inflate(R.layout.lclk_barrage_item, null);
     ImageView avatarView = (ImageView) view.findViewById(R.id.live_barrage_item_avatar_view);
     TextView nameView = (TextView) view.findViewById(R.id.live_barrage_item_name_view);
     TextView contentView = (TextView) view.findViewById(R.id.live_barrage_item_content_view);
@@ -322,12 +322,12 @@ public class LCLKIMFragment extends Fragment {
   }
 
   private void addGiftBarrage(LCLKGiftMessage message) {
-    View view = getActivity().getLayoutInflater().inflate(R.layout.live_barrage_gift_item, null);
+    View view = getActivity().getLayoutInflater().inflate(R.layout.lclk_barrage_gift_item, null);
     ImageView avatarView = (ImageView) view.findViewById(R.id.live_barrage_gift_icon_view);
     TextView nameView = (TextView) view.findViewById(R.id.live_barrage_gift_name_view);
     TextView numberView = (TextView) view.findViewById(R.id.live_barrage_gift_number_view);
 
-    avatarView.setImageResource(R.mipmap.gift_demo);
+    avatarView.setImageResource(R.mipmap.lclk_gift_demo);
     nameView.setText(message.getName());
     if (message.getNumber() > 0) {
       numberView.setText(message.getNumber() + "");

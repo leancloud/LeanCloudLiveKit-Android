@@ -32,7 +32,7 @@ public class LCLKPlayFragment extends Fragment {
   @Nullable
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.live_play_fragment, container, false);
+    return inflater.inflate(R.layout.lclk_play_fragment, container, false);
   }
 
   // TODO 根据 liveId 获取直播地址
