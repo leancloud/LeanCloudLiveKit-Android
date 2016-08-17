@@ -2,9 +2,13 @@ package cn.leancloud.leancloudlivekit.utils;
 
 /**
  * Created by wli on 16/8/4.
+ * LeanCloudLiveKit 常量类
  */
 public class LCLKConstants {
 
+  /**
+   * LeanCloudLiveKit 常量前缀，避免与用户其他常量混淆
+   */
   private static final String LEANMESSAGE_CONSTANTS_PREFIX = "cn.leancloud.livekit.";
 
   private static String getPrefixConstant(String str) {

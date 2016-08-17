@@ -16,8 +16,14 @@ import cn.leancloud.leancloudlivekit.LCLiveKitProvider;
 
 /**
  * Created by wli on 16/8/10.
+ * 用户信息的缓存，仅仅缓存与内存中
  */
 public class LCLKProfileCache {
+
+  /**
+   * userMap 最大的数量，避免数据过多导致 oom
+   */
+  private final int PROFILE_CACHE_MAX_SIZE = 1000;
 
   private Map<String, LCLKUser> userMap;
 
@@ -111,8 +117,7 @@ public class LCLKProfileCache {
   }
 
   /**
-   * 内存中是否包相关 LCChatKitUser 的信息
-   *
+   * 内存中是否包相关 LCLKUser 的信息
    * @param id
    * @return
    */
@@ -121,7 +126,7 @@ public class LCLKProfileCache {
   }
 
   public synchronized void cacheUser(LCLKUser userProfile) {
-    if (userMap.size() > 1000) {
+    if (userMap.size() > PROFILE_CACHE_MAX_SIZE) {
       userMap.clear();
     }
     userMap.put(userProfile.getUserId(), userProfile);

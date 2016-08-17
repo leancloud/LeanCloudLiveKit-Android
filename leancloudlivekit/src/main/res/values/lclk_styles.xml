@@ -30,4 +30,23 @@
     </style>
 
     <style name="LCIMTextAppearance.Small"/>
+
+
+    <!-- Avatar -->
+    <style name="LCLKAvatar">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:scaleType">centerCrop</item>
+        <!--<item name="android:src">@drawable/chat_default_user_avatar</item>-->
+    </style>
+
+    <style name="LCLKAvatar.Large">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="LCLKAvatar.Small">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
 </resources>

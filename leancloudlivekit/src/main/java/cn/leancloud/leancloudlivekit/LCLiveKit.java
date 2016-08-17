@@ -18,6 +18,7 @@ import cn.leancloud.leancloudlivekit.handler.LCLKMessageHandler;
 
 /**
  * Created by wli on 16/8/4.
+ * * LeanCloudLiveKit 的管理类
  */
 public class LCLiveKit {
 

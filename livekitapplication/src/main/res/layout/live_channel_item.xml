@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="@dimen/live_channel_item_height"
-              android:background="#cc2C2F30"
+              android:background="#121E34"
               android:orientation="vertical">
 
     <View
