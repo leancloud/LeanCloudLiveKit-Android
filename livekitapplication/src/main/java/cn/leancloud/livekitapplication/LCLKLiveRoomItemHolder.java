@@ -19,7 +19,7 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by wli on 16/8/5.
  */
-public class ChannelItemHolder extends LCLKCommonViewHolder<LCLiveRoom> {
+public class LCLKLiveRoomItemHolder extends LCLKCommonViewHolder<LCLiveRoom> {
 
   private ImageView backgroudView;
   private TextView nameView;
@@ -29,18 +29,18 @@ public class ChannelItemHolder extends LCLKCommonViewHolder<LCLiveRoom> {
 
   private LCLiveRoom liveRoom;
 
-  public ChannelItemHolder(Context context, ViewGroup root) {
-    super(context, root, R.layout.live_channel_item);
-    backgroudView = (ImageView)itemView.findViewById(R.id.live_channle_item_bg_view);
-    nameView = (TextView)itemView.findViewById(R.id.live_channle_item_name_view);
-    avatarView = (LCLKRoundCornerImageView)itemView.findViewById(R.id.live_channle_item_avatar_view);
-    statusView = (TextView)itemView.findViewById(R.id.live_channle_item_status_view);
-    descriptionView = (TextView)itemView.findViewById(R.id.live_channle_item_description_view);
+  public LCLKLiveRoomItemHolder(Context context, ViewGroup root) {
+    super(context, root, R.layout.lclk_live_room_item);
+    backgroudView = (ImageView) itemView.findViewById(R.id.live_room_item_bg_view);
+    nameView = (TextView) itemView.findViewById(R.id.live_room_item_name_view);
+    avatarView = (LCLKRoundCornerImageView) itemView.findViewById(R.id.live_room_item_avatar_view);
+    statusView = (TextView) itemView.findViewById(R.id.live_room_item_status_view);
+    descriptionView = (TextView) itemView.findViewById(R.id.live_room_item_description_view);
 
     itemView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        EventBus.getDefault().post(new LiveRoomItemClickEvent(liveRoom));
+        EventBus.getDefault().post(new LCLKLiveRoomItemClickEvent(liveRoom));
       }
     });
   }
@@ -59,10 +59,10 @@ public class ChannelItemHolder extends LCLKCommonViewHolder<LCLiveRoom> {
     descriptionView.setText(liveRoom.getTitle() + " #" + liveRoom.getTopic());
   }
 
-  public static ViewHolderCreator HOLDER_CREATOR = new ViewHolderCreator<ChannelItemHolder>() {
+  public static ViewHolderCreator HOLDER_CREATOR = new ViewHolderCreator<LCLKLiveRoomItemHolder>() {
     @Override
-    public ChannelItemHolder createByViewGroupAndType(ViewGroup parent, int viewType) {
-      return new ChannelItemHolder(parent.getContext(), parent);
+    public LCLKLiveRoomItemHolder createByViewGroupAndType(ViewGroup parent, int viewType) {
+      return new LCLKLiveRoomItemHolder(parent.getContext(), parent);
     }
   };
 }

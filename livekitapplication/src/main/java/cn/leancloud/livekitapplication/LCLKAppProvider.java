@@ -10,18 +10,18 @@ import cn.leancloud.leancloudlivekit.LCLKUser;
 /**
  * Created by wli on 16/8/5.
  */
-public class LiveAppProvider implements LCLiveKitProvider {
+public class LCLKAppProvider implements LCLiveKitProvider {
 
-  private static LiveAppProvider customUserProvider;
+  private static LCLKAppProvider customUserProvider;
 
-  public synchronized static LiveAppProvider getInstance() {
+  public synchronized static LCLKAppProvider getInstance() {
     if (null == customUserProvider) {
-      customUserProvider = new LiveAppProvider();
+      customUserProvider = new LCLKAppProvider();
     }
     return customUserProvider;
   }
 
-  private LiveAppProvider() {
+  private LCLKAppProvider() {
   }
 
   private static List<LCLKUser> partUsers = new ArrayList<LCLKUser>();

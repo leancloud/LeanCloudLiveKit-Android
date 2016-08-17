@@ -1,73 +1,18 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="LCIMKitTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/lcim_common_blue</item>
-        <item name="colorPrimaryDark">@color/lcim_common_blue</item>
-        <item name="colorAccent">@color/lcim_common_blue</item>
-        <item name="actionBarTheme">@style/LCIMActionBarTheme</item>
-    </style>
-
-    <!-- activity -->
-    <style name="LCIMActivity" parent="LCIMKitTheme"/>
-
-    <style name="LCIMActivity.NoActionBar">
-        <item name="colorPrimary">@color/lcim_common_blue</item>
-        <item name="colorPrimaryDark">@color/lcim_common_blue</item>
-        <item name="colorAccent">@color/lcim_common_blue</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:editTextStyle">@style/LCIMEditText</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="LCIMActionBarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-    </style>
-    <!--<style name="LCIMActivity.FullScreen" >-->
-    <!--<item name="android:windowFullscreen">true</item>-->
-    <!--</style>-->
-
-
     <!-- divider -->
     <style name="LCIMDividerLine">
-        <item name="android:background">@color/lcim_divider_line_color</item>
+        <item name="android:background">@color/lclk_divider_line_color</item>
     </style>
 
     <style name="LCIMDividerLine.Horizontal">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/lcim_divider_line_height</item>
+        <item name="android:layout_height">@dimen/lclk_divider_line_height</item>
     </style>
 
     <style name="LCIMDividerLine.Vertical">
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_width">@dimen/lcim_divider_line_height</item>
+        <item name="android:layout_width">@dimen/lclk_divider_line_height</item>
     </style>
 
-
-    <!-- editText -->
-    <style name="LCIMEditText" parent="Widget.AppCompat.EditText">
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:textColorPrimary">@android:color/black</item>
-    </style>
-
-    <!-- text appearance -->
-
-
-
-    <style name="LCLKDividerLine">
-        <item name="android:background">#979797</item>
-    </style>
-
-    <style name="LCLKDividerLine.Horizontal">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-    </style>
-
-    <style name="LCLKDividerLine.Vertical">
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_width">1dp</item>
-    </style>
 </resources>

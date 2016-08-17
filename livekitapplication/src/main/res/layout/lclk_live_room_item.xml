@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/lclk_live_room_item_height">
+
+    <ImageView
+        android:id="@+id/live_room_item_bg_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/live_room_item_content_layout"
+        android:background="@color/lclk_live_room_item_imageview_bg"/>
+
+    <TextView
+        android:id="@+id/live_room_item_status_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lclk_live_room_margin"
+        android:layout_marginTop="@dimen/lclk_live_room_margin"
+        android:textColor="@color/lclk_live_room_item_tv_color"/>
+
+    <LinearLayout
+        android:id="@+id/live_room_item_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lclk_live_room_item_content_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/live_room_item_name_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:singleLine="true"
+            android:textColor="@color/lclk_live_room_item_tv_color"
+            android:textSize="@dimen/lclk_textsize_smaller"/>
+
+        <TextView
+            android:id="@+id/live_room_item_description_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="@dimen/lclk_live_room_avatar_width"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/lclk_textsize_small"/>
+    </LinearLayout>
+
+    <cn.leancloud.leancloudlivekit.im.LCLKRoundCornerImageView
+        android:id="@+id/live_room_item_avatar_view"
+        android:layout_width="@dimen/lclk_live_room_avatar_width"
+        android:layout_height="@dimen/lclk_live_room_avatar_width"
+        android:layout_alignTop="@+id/live_room_item_content_layout"
+        android:layout_marginLeft="@dimen/lclk_live_room_margin"
+        android:layout_marginTop="-15dp"
+        android:src="@mipmap/lclk_default_avatar_icon"/>
+</RelativeLayout>

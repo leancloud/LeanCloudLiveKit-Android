@@ -49,7 +49,7 @@ public class LCLKGiftDialogFragment extends DialogFragment {
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     // 使用不带Theme的构造器, 获得的dialog边框距离屏幕仍有几毫米的缝隙。
-    Dialog dialog = new Dialog(getActivity(), R.style.BottomDialog);
+    Dialog dialog = new Dialog(getActivity(), R.style.LCLKBottomDialog);
 
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 设置Content前设定
     dialog.setContentView(R.layout.lclk_gift_dialog);
@@ -93,7 +93,7 @@ public class LCLKGiftDialogFragment extends DialogFragment {
   private void initGridView() {
     if (null != pagerAdapter) {
       final int screenWidth = getResources().getDisplayMetrics().widthPixels;
-      final int dialogHeight = getResources().getDimensionPixelOffset(R.dimen.live_gift_dialog_height);
+      final int dialogHeight = getResources().getDimensionPixelOffset(R.dimen.lclk_live_gift_dialog_height);
       for (View view : giftViewList) {
         if (null == currentLayout || currentLayout.getChildCount() >= pageWidth * pagerHeight) {
           currentLayout = new GridLayout(view.getContext());

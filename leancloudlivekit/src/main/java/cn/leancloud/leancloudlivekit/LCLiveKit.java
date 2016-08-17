@@ -15,6 +15,9 @@ import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import cn.leancloud.leancloudlivekit.handler.LCLKClientEventHandler;
 import cn.leancloud.leancloudlivekit.handler.LCLKConversationHandler;
 import cn.leancloud.leancloudlivekit.handler.LCLKMessageHandler;
+import cn.leancloud.leancloudlivekit.im.LCLKGiftMessage;
+import cn.leancloud.leancloudlivekit.im.LCLKIMBarrageMessage;
+import cn.leancloud.leancloudlivekit.im.LCLKIMMessage;
 
 /**
  * Created by wli on 16/8/4.
@@ -64,6 +67,10 @@ public class LCLiveKit {
 
     // 默认设置为离线消息仅推送数量
     AVIMClient.setOfflineMessagePush(true);
+
+    AVIMMessageManager.registerAVIMMessageType(LCLKIMMessage.class);
+    AVIMMessageManager.registerAVIMMessageType(LCLKIMBarrageMessage.class);
+    AVIMMessageManager.registerAVIMMessageType(LCLKGiftMessage.class);
   }
   public void setProfileProvider(LCLiveKitProvider profileProvider) {
     this.liveKitProvider = profileProvider;

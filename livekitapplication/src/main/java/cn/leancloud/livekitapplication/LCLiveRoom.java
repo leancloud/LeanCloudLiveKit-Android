@@ -8,6 +8,7 @@ import com.avos.avoscloud.AVObject;
 
 /**
  * Created by wli on 16/8/10.
+ * 直播间
  */
 @AVClassName("live")
 public class LCLiveRoom extends AVObject {

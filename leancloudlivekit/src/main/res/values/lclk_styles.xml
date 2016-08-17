@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+
+    <style name="LCLKAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/lclk_color_primary</item>
+        <item name="colorPrimaryDark">@color/lclk_color_primary_dark</item>
+        <item name="colorAccent">@color/lclk_color_accent</item>
     </style>
 
-    <style name="BottomDialog" parent="@style/AppTheme">
+    <style name="LCLKActivity" parent="LCLKAppTheme"/>
+
+    <style name="LCLKActivity.NoActionBar">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--<item name="android:editTextStyle">@style/LCIMEditText</item>-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="LCLKActionBarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+
+    <style name="LCLKActivity.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="LCLKBottomDialog" parent="@style/LCLKAppTheme">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:windowIsFloating">true</item>
@@ -15,21 +33,28 @@
     </style>
 
 
-    <style name="LCIMTextAppearance"/>
+    <!-- Text -->
+    <style name="LCLKTextAppearance"/>
 
-    <style name="LCIMTextAppearance.Large">
+    <style name="LCLKTextAppearance.Large">
         <item name="android:textSize">@dimen/lclk_textsize_large</item>
     </style>
 
-    <style name="LCIMTextAppearance.Normal">
+    <style name="LCLKTextAppearance.Normal">
         <item name="android:textSize">@dimen/lclk_textsize_normal</item>
     </style>
 
-    <style name="LCIMTextAppearance.Normal.Bold">
+    <style name="LCLKTextAppearance.Normal.Bold">
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="LCIMTextAppearance.Small"/>
+    <style name="LCLKTextAppearance.Small">
+        <item name="android:textSize">@dimen/lclk_textsize_small</item>
+    </style>
+
+    <style name="LCLKTextAppearance.Smaller">
+        <item name="android:textSize">@dimen/lclk_textsize_smaller</item>
+    </style>
 
 
     <!-- Avatar -->

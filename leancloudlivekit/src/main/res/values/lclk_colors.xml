@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#121E34</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="lclk_color_primary">#121E34</color>
+    <color name="lclk_color_primary_dark">#121E34</color>
+    <color name="lclk_color_accent">@color/lclk_common_blue</color>
 
+    <color name="lclk_common_blue">#2c97e8</color>
+    <color name="lclk_common_gray">#898989</color>
+    <color name="lclk_commom_read">#ff0000</color>
 
-    <color name="live_gift_dialog_bg">#64121E34</color>
+    <color name="lclk_live_gift_dialog_bg">#64121E34</color>
 </resources>

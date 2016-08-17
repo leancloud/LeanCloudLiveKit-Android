@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lclk_color_primary"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_color"
         android:orientation="vertical"
         android:paddingLeft="40dp"
         android:paddingRight="40dp">
@@ -30,8 +30,10 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
             android:background="@drawable/edittext_bg"
-            android:hint="输入标题吸引更多粉丝"
+            android:textAppearance="@style/LCLKTextAppearance.Small"
+            android:hint="@string/lclk_live_room_create_title_hint"
             android:textColor="@android:color/white"
             android:textColorHint="@color/hint_text_color"/>
 
@@ -41,7 +43,9 @@
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/edittext_bg"
-            android:hint="添加话题"
+            android:hint="@string/lclk_live_room_create_topic_hint"
+            android:textAppearance="@style/LCLKTextAppearance.Small"
+            android:gravity="center_vertical"
             android:textColor="@android:color/white"
             android:textColorHint="@color/hint_text_color"/>
 
@@ -49,12 +53,12 @@
             android:id="@+id/live_channle_start_tv_start"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginBottom="40dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/start_channel_btn_bg"
             android:clickable="true"
             android:gravity="center"
             android:text="开始直播"
-            android:layout_marginBottom="40dp"
-            android:textColor="@color/action_color"/>
+            android:textColor="@color/lclk_live_room_action_color"/>
     </LinearLayout>
 </ScrollView>

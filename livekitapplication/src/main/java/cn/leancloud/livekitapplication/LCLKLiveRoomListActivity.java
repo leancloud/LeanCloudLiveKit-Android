@@ -16,6 +16,8 @@ import com.avos.avoscloud.FindCallback;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import cn.leancloud.leancloudlivekit.im.LCLKCommonListAdapter;
 import cn.leancloud.leancloudlivekit.play.LCLKPlayActivity;
 import cn.leancloud.leancloudlivekit.utils.LCLKConstants;
@@ -23,22 +25,25 @@ import de.greenrobot.event.EventBus;
 
 /**
  * Created by wli on 16/8/5.
+ * 直播间页面
  */
-public class LiveRoomListActivity extends AppCompatActivity {
-  protected SwipeRefreshLayout refreshLayout;
-  protected RecyclerView recyclerView;
+public class LCLKLiveRoomListActivity extends AppCompatActivity {
+
+  @Bind(R.id.refreshable_list_srl)
+  SwipeRefreshLayout refreshLayout;
+
+  @Bind(R.id.refreshable_list_recycler)
+  RecyclerView recyclerView;
 
   GridLayoutManager layoutManager;
-  protected LCLKCommonListAdapter<LCLiveRoom> itemAdapter;
+  LCLKCommonListAdapter<LCLiveRoom> itemAdapter;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_live_channel);
+    setContentView(R.layout.lclk_live_room_list_activity);
     EventBus.getDefault().register(this);
-
-    refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshable_list_srl);
-    recyclerView = (RecyclerView) findViewById(R.id.refreshable_list_recycler);
+    ButterKnife.bind(this);
 
     layoutManager = new GridLayoutManager(this, 2);
     recyclerView.setLayoutManager(layoutManager);
@@ -50,11 +55,12 @@ public class LiveRoomListActivity extends AppCompatActivity {
       }
     });
 
-    itemAdapter = new LCLKCommonListAdapter<>(ChannelItemHolder.class);
+    itemAdapter = new LCLKCommonListAdapter<>(LCLKLiveRoomItemHolder.class);
     recyclerView.setAdapter(itemAdapter);
 
     fetchChannels();
   }
+
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,11 +77,17 @@ public class LiveRoomListActivity extends AppCompatActivity {
     return super.onOptionsItemSelected(item);
   }
 
+  /**
+   * 跳转到创建直播间的页面
+   */
   private void gotoStartChannelAcitivty() {
-    Intent intent = new Intent(this, LiveRoomCreateActivity.class);
+    Intent intent = new Intent(this, LCLKLiveRoomCreateActivity.class);
     startActivity(intent);
   }
 
+  /**
+   * 拉取直播间信息
+   */
   private void fetchChannels() {
     AVQuery<LCLiveRoom> avQuery = AVQuery.getQuery(LCLiveRoom.class);
     avQuery.findInBackground(new FindCallback<LCLiveRoom>() {
@@ -88,8 +100,8 @@ public class LiveRoomListActivity extends AppCompatActivity {
     });
   }
 
-  public void onEvent(LiveRoomItemClickEvent event) {
-    Intent intent = new Intent(LiveRoomListActivity.this, LCLKPlayActivity.class);
+  public void onEvent(LCLKLiveRoomItemClickEvent event) {
+    Intent intent = new Intent(LCLKLiveRoomListActivity.this, LCLKPlayActivity.class);
     intent.putExtra(LCLKConstants.LIVE_ID, event.liveRoom.getLiveId());
     startActivity(intent);
   }

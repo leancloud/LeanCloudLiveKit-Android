@@ -35,8 +35,9 @@ import cn.leancloud.leancloudlivekit.utils.LCLKConstants;
 
 /**
  * Created by wli on 16/8/8.
+ * 创建直播间页面
  */
-public class LiveRoomCreateActivity extends AppCompatActivity {
+public class LCLKLiveRoomCreateActivity extends AppCompatActivity {
 
   @Bind(R.id.live_channle_start_et_title)
   EditText titleView;
@@ -55,7 +56,7 @@ public class LiveRoomCreateActivity extends AppCompatActivity {
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_live_channel_start);
+    setContentView(R.layout.lclk_live_room_create_activity);
     ButterKnife.bind(this);
   }
 
@@ -123,7 +124,7 @@ public class LiveRoomCreateActivity extends AppCompatActivity {
     liveRoom.saveInBackground(new SaveCallback() {
       @Override
       public void done(AVException e) {
-        Intent intent = new Intent(LiveRoomCreateActivity.this, LCLKRecordActivity.class);
+        Intent intent = new Intent(LCLKLiveRoomCreateActivity.this, LCLKRecordActivity.class);
         intent.putExtra(LCLKConstants.LIVE_ID, liveId);
         startActivity(intent);
       }

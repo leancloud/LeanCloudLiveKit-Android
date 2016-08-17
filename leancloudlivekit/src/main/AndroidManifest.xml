@@ -29,8 +29,8 @@
 
         <service android:name="com.avos.avoscloud.PushService"/>
 
-        <activity android:name=".play.LCLKPlayActivity"/>
-        <activity android:name=".record.LCLKRecordActivity"/>
+        <activity android:name="cn.leancloud.leancloudlivekit.play.LCLKPlayActivity"/>
+        <activity android:name="cn.leancloud.leancloudlivekit.record.LCLKRecordActivity"/>
     </application>
 
 </manifest>

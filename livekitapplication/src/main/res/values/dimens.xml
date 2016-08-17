@@ -1,16 +1,11 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="live_channel_item_height">220dp</dimen>
+    <dimen name="lclk_live_room_margin">10dp</dimen>
 
-    <dimen name="lcim_setting_item_height">60dp</dimen>
+    <dimen name="lclk_live_room_avatar_width">30dp</dimen>
 
-    <dimen name="lcim_divider_line_height">1px</dimen>
-
-    <!-- badge -->
-    <dimen name="lcim_badge_radius">5dp</dimen>
-    <dimen name="lcim_badge_padding">3dp</dimen>
-    <dimen name="lcim_badge_stroke_width">1dp</dimen>
+    <dimen name="lclk_live_room_item_height">220dp</dimen>
+    <dimen name="lclk_divider_line_height">1px</dimen>
 </resources>
