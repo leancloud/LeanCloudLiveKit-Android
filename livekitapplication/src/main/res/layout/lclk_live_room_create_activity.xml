@@ -23,7 +23,7 @@
             android:clickable="true"
             android:padding="2dp"
             android:scaleType="centerInside"
-            android:src="@mipmap/channel_add_image"/>
+            android:src="@mipmap/lclk_live_add_image"/>
 
         <EditText
             android:id="@+id/live_channle_start_et_title"
@@ -35,7 +35,7 @@
             android:textAppearance="@style/LCLKTextAppearance.Small"
             android:hint="@string/lclk_live_room_create_title_hint"
             android:textColor="@android:color/white"
-            android:textColorHint="@color/hint_text_color"/>
+            android:textColorHint="@color/lclk_live_room_hint_text_color"/>
 
         <EditText
             android:id="@+id/live_channle_start_et_topic"
@@ -47,7 +47,7 @@
             android:textAppearance="@style/LCLKTextAppearance.Small"
             android:gravity="center_vertical"
             android:textColor="@android:color/white"
-            android:textColorHint="@color/hint_text_color"/>
+            android:textColorHint="@color/lclk_live_room_hint_text_color"/>
 
         <TextView
             android:id="@+id/live_channle_start_tv_start"

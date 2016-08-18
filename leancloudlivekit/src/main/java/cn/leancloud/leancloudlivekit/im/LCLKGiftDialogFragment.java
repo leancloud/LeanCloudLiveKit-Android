@@ -103,7 +103,7 @@ public class LCLKGiftDialogFragment extends DialogFragment {
           currentLayout.setUseDefaultMargins(true);
           pagerAdapter.addView(currentLayout);
         }
-        view.setLayoutParams(new ViewGroup.LayoutParams(screenWidth/pageWidth, dialogHeight/pagerHeight));
+        view.setLayoutParams(new ViewGroup.LayoutParams(screenWidth / pageWidth, dialogHeight / pagerHeight));
         currentLayout.addView(view);
       }
       pagerAdapter.notifyDataSetChanged();

@@ -4,6 +4,6 @@
     <item
         android:id="@+id/menu_channel_start"
         android:orderInCategory="100"
-        android:title="开始直播"
+        android:title="@string/lclk_start_live"
         app:showAsAction="ifRoom"/>
 </menu>

@@ -10,7 +10,7 @@
             <solid android:color="@android:color/transparent"/>
             <stroke
                 android:width="2dp"
-                android:color="@color/edit_line_color"/>
+                android:color="@color/lclk_live_room_edit_line_color"/>
         </shape>
     </item>
 </layer-list>

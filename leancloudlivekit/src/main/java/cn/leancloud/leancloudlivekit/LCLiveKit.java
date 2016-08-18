@@ -18,6 +18,7 @@ import cn.leancloud.leancloudlivekit.handler.LCLKMessageHandler;
 import cn.leancloud.leancloudlivekit.im.LCLKGiftMessage;
 import cn.leancloud.leancloudlivekit.im.LCLKIMBarrageMessage;
 import cn.leancloud.leancloudlivekit.im.LCLKIMMessage;
+import cn.leancloud.leancloudlivekit.im.LCLKIMStatusMessage;
 
 /**
  * Created by wli on 16/8/4.
@@ -71,6 +72,7 @@ public class LCLiveKit {
     AVIMMessageManager.registerAVIMMessageType(LCLKIMMessage.class);
     AVIMMessageManager.registerAVIMMessageType(LCLKIMBarrageMessage.class);
     AVIMMessageManager.registerAVIMMessageType(LCLKGiftMessage.class);
+    AVIMMessageManager.registerAVIMMessageType(LCLKIMStatusMessage.class);
   }
   public void setProfileProvider(LCLiveKitProvider profileProvider) {
     this.liveKitProvider = profileProvider;

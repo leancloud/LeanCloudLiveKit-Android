@@ -28,6 +28,7 @@
             android:name=".LCLKLiveRoomCreateActivity"
             android:label="@string/lclk_start_live"
             android:screenOrientation="portrait"
+            android:theme="@style/LCLKActivity.NoActionBar"
             android:windowSoftInputMode="stateHidden"/>
     </application>
 

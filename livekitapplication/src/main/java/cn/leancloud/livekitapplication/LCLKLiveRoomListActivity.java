@@ -64,7 +64,7 @@ public class LCLKLiveRoomListActivity extends AppCompatActivity {
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.menu_channel_start, menu);
+    getMenuInflater().inflate(R.menu.lclk_menu_live_create, menu);
     return true;
   }
 

@@ -29,8 +29,13 @@
 
         <service android:name="com.avos.avoscloud.PushService"/>
 
-        <activity android:name="cn.leancloud.leancloudlivekit.play.LCLKPlayActivity"/>
-        <activity android:name="cn.leancloud.leancloudlivekit.record.LCLKRecordActivity"/>
+        <activity android:name="cn.leancloud.leancloudlivekit.play.LCLKPlayActivity"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/LCLKActivity.FullScreen"/>
+        <activity
+            android:name="cn.leancloud.leancloudlivekit.record.LCLKRecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/LCLKActivity.FullScreen"/>
     </application>
 
 </manifest>

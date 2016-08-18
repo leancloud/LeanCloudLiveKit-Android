@@ -18,15 +18,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.avos.avoscloud.im.v2.AVIMConversation;
 import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.AVIMTypedMessage;
 import com.avos.avoscloud.im.v2.callback.AVIMConversationCallback;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 import java.util.List;
-
 import cn.leancloud.leancloudlivekit.LCLiveKit;
 import cn.leancloud.leancloudlivekit.LCLKProfilesCallBack;
 import cn.leancloud.leancloudlivekit.LCLKUser;
@@ -155,7 +154,28 @@ public class LCLKIMFragment extends Fragment {
     imConversation.join(new AVIMConversationCallback() {
       @Override
       public void done(AVIMException e) {
+        if (null == e) {
+          sendJoinMessage();
+        }
+      }
+    });
+  }
 
+  private void sendJoinMessage() {
+    String clientId = LCLiveKit.getInstance().getCurrentUserId();
+    LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(clientId), new LCLKProfilesCallBack() {
+      @Override
+      public void done(List<LCLKUser> userList, Exception exception) {
+        String userName = "";
+        if (null != userList && userList.size() > 0) {
+          userName = userList.get(0).getUserName();
+        }
+        if (TextUtils.isEmpty(userName)) {
+          userName = "游客";
+        }
+        LCLKIMStatusMessage message = new LCLKIMStatusMessage();
+        message.setStatusContent(userName + "来了");
+        imConversation.sendMessage(message, null);
       }
     });
   }
@@ -245,8 +265,9 @@ public class LCLKIMFragment extends Fragment {
         addBarrage((LCLKIMBarrageMessage) messageEvent.message);
       } else if (messageEvent.message instanceof LCLKGiftMessage) {
         addGiftBarrage((LCLKGiftMessage) messageEvent.message);
-      } else if (messageEvent.message instanceof LCLKIMMessage) {
-        itemAdapter.addDataList(Arrays.asList((LCLKIMMessage) messageEvent.message));
+      } else if (messageEvent.message instanceof LCLKIMMessage
+        || messageEvent.message instanceof LCLKIMStatusMessage) {
+        itemAdapter.addDataList(Arrays.asList(messageEvent.message));
         itemAdapter.notifyDataSetChanged();
         if (isBottom) {
           scrollToBottom();
@@ -351,7 +372,7 @@ public class LCLKIMFragment extends Fragment {
             message.setMessageContent(content);
             message.setName(userList.get(0).getUserName());
             message.setAvatar(userList.get(0).getAvatarUrl());
-            itemAdapter.addDataList(Arrays.asList(message));
+            itemAdapter.addDataList(Arrays.asList((AVIMTypedMessage) message));
             itemAdapter.notifyDataSetChanged();
             scrollToBottom();
             imConversation.sendMessage(message, new AVIMConversationCallback() {

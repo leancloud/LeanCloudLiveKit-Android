@@ -80,7 +80,6 @@ public class LCLKLiveRoomCreateActivity extends AppCompatActivity {
     builder.setCancelable(true);
     AlertDialog dialog = builder.create();
     dialog.show();
-
   }
 
   @OnClick(R.id.live_channle_start_tv_start)
@@ -124,6 +123,7 @@ public class LCLKLiveRoomCreateActivity extends AppCompatActivity {
     liveRoom.saveInBackground(new SaveCallback() {
       @Override
       public void done(AVException e) {
+        finish();
         Intent intent = new Intent(LCLKLiveRoomCreateActivity.this, LCLKRecordActivity.class);
         intent.putExtra(LCLKConstants.LIVE_ID, liveId);
         startActivity(intent);

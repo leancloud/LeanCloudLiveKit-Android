@@ -41,8 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:layout_marginLeft="@dimen/lclk_live_room_avatar_width"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/lclk_live_room_margin"
             android:singleLine="true"
             android:textColor="@android:color/white"
             android:textSize="@dimen/lclk_textsize_small"/>

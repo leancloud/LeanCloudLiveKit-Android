@@ -2,7 +2,9 @@
 <resources>
     <dimen name="lclk_gift_item_height">70dp</dimen>
 
-    <dimen name="lclk_live_gift_dialog_height">250dp</dimen>
+    <dimen name="lclk_live_gift_dialog_height">200dp</dimen>
+
+    <dimen name="lclk_im_chat_item_avatar_width">24dp</dimen>
 
 
     <!-- textsize -->

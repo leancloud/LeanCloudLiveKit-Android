@@ -8,10 +8,13 @@ import com.avos.avoscloud.im.v2.AVIMTypedMessage;
 /**
  * Created by wli on 16/7/22.
  */
-@AVIMMessageType(type = LCLKIMMessage.LIVE_MESSAGE_TYPE)
+@AVIMMessageType(type = LCLKIMMessage.LIVE_IM_TEXT_MESSAGE_TYPE)
 public class LCLKIMMessage extends AVIMTypedMessage {
 
-  public static final int LIVE_MESSAGE_TYPE = 1001;
+  public static final int LIVE_IM_TEXT_MESSAGE_TYPE = 5001;
+  public static final int LIVE_IM_STATUS_MESSAGE_TYPE = 5002;
+  public static final int LIVE_IM_GIFT_MESSAGE_TYPE = 5003;
+  public static final int LIVE_IM_BARRAGE_MESSAGE_TYPE = 5004;
 
   public static final String LIVE_MESSAGE_AVATAR_KEY = "avatar";
   public static final String LIVE_MESSAGE_NAME_KEY = "name";
