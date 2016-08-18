@@ -6,7 +6,7 @@
               android:layout_weight="1"
     android:minHeight="20dp">
 
-    <cn.leancloud.leancloudlivekit.barrage.BarrageLayout
+    <cn.leancloud.leancloudlivekit.barrage.LCLKBarrageLayout
         android:id="@+id/live_im_gift_barrage_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

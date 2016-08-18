@@ -18,19 +18,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.avos.avoscloud.im.v2.AVIMConversation;
 import com.avos.avoscloud.im.v2.AVIMException;
 import com.avos.avoscloud.im.v2.AVIMTypedMessage;
 import com.avos.avoscloud.im.v2.callback.AVIMConversationCallback;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import cn.leancloud.leancloudlivekit.LCLiveKit;
 import cn.leancloud.leancloudlivekit.LCLKProfilesCallBack;
 import cn.leancloud.leancloudlivekit.LCLKUser;
 import cn.leancloud.leancloudlivekit.R;
-import cn.leancloud.leancloudlivekit.barrage.BarrageLayout;
+import cn.leancloud.leancloudlivekit.barrage.LCLKBarrageLayout;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -47,9 +50,9 @@ public class LCLKIMFragment extends Fragment {
 
   ImageView avatarView;
   TextView nameView;
-  TextView closeView;
-  BarrageLayout giftLayout;
-  BarrageLayout barrageLayout;
+  ImageView closeView;
+  LCLKBarrageLayout giftLayout;
+  LCLKBarrageLayout barrageLayout;
   EditText inputView;
   TextView sendButton;
   TextView giftView;
@@ -72,11 +75,11 @@ public class LCLKIMFragment extends Fragment {
   }
 
   private void initView(View view) {
-    avatarView = (ImageView) view.findViewById(R.id.live_im_personal_avatar_view);
-    nameView = (TextView) view.findViewById(R.id.live_im_personal_name_view);
-    closeView = (TextView) view.findViewById(R.id.live_im_personal_close_view);
-    giftLayout = (BarrageLayout) view.findViewById(R.id.live_im_gift_barrage_view);
-    barrageLayout = (BarrageLayout) view.findViewById(R.id.live_im_barrage_barrage_view);
+    avatarView = (ImageView) view.findViewById(R.id.lclk_live_im_personal_avatar_view);
+    nameView = (TextView) view.findViewById(R.id.lclk_live_im_personal_name_view);
+    closeView = (ImageView) view.findViewById(R.id.lclk_live_im_personal_close_view);
+    giftLayout = (LCLKBarrageLayout) view.findViewById(R.id.live_im_gift_barrage_view);
+    barrageLayout = (LCLKBarrageLayout) view.findViewById(R.id.live_im_barrage_barrage_view);
     inputView = (EditText) view.findViewById(R.id.live_im_input_input_view);
     sendButton = (TextView) view.findViewById(R.id.live_im_input_send_view);
     giftView = (TextView) view.findViewById(R.id.live_im_input_gift_view);
@@ -232,13 +235,6 @@ public class LCLKIMFragment extends Fragment {
 
   private void onGiftClick() {
     LCLKGiftDialogFragment giftDialogFragment = new LCLKGiftDialogFragment();
-    View giftItem = getActivity().getLayoutInflater().inflate(R.layout.lclk_gift_item, null);
-    giftItem.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        sendGift("Gift");
-      }
-    });
     giftDialogFragment.setOnDismissListener(new DialogInterface.OnDismissListener() {
       @Override
       public void onDismiss(DialogInterface dialog) {
@@ -246,8 +242,30 @@ public class LCLKIMFragment extends Fragment {
       }
     });
     inputLayout.setVisibility(View.INVISIBLE);
-    giftDialogFragment.addView(giftItem);
+
+    List<View> viewList = new ArrayList<>();
+    viewList.add(getGiftItem());
+    viewList.add(getGiftItem());
+    viewList.add(getGiftItem());
+    viewList.add(getGiftItem());
+    viewList.add(getGiftItem());
+    viewList.add(getGiftItem());
+    viewList.add(getGiftItem());
+    viewList.add(getGiftItem());
+    viewList.add(getGiftItem());
+    giftDialogFragment.setViews(viewList);
     giftDialogFragment.show(getFragmentManager(), "dialog");
+  }
+
+  private View getGiftItem() {
+    View giftItem = getActivity().getLayoutInflater().inflate(R.layout.lclk_gift_item, null);
+    giftItem.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        sendGift("Gift");
+      }
+    });
+    return giftItem;
   }
 
   private void onNewMessageClick() {

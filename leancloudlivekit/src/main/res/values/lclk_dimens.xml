@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="lclk_gift_item_height">70dp</dimen>
-
-    <dimen name="lclk_live_gift_dialog_height">200dp</dimen>
-
+    <dimen name="lclk_im_profile_margin">10dp</dimen>
+    <dimen name="lclk_live_gift_dialog_height">175dp</dimen>
     <dimen name="lclk_im_chat_item_avatar_width">24dp</dimen>
+    <dimen name="lclk_im_profile_avatar_width">45dp</dimen>
+    <dimen name="lclk_im_barrage_avatar_width">40dp</dimen>
+    <dimen name="lclk_im_barrage_item_width">40dp</dimen>
 
 
     <!-- textsize -->

@@ -81,11 +81,6 @@ public class LCLKGiftDialogFragment extends DialogFragment {
     initGridView();
   }
 
-  public void addView(View view) {
-    giftViewList.add(view);
-    initGridView();
-  }
-
   public void setOnDismissListener(final DialogInterface.OnDismissListener listener) {
     onDismissListener = listener;
   }
