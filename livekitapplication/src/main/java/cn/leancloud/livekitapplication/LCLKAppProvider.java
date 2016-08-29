@@ -5,7 +5,6 @@ import com.avos.avoscloud.AVCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.leancloud.leancloudlivekit.LCLKProfilesCallBack;
 import cn.leancloud.leancloudlivekit.LCLiveKitProvider;
 import cn.leancloud.leancloudlivekit.LCLKUser;
 
@@ -39,7 +38,7 @@ public class LCLKAppProvider implements LCLiveKitProvider {
 
 
   @Override
-  public void fetchProfiles(List<String> userIdList, LCLKProfilesCallBack profilesCallBack) {
+  public void fetchProfiles(List<String> userIdList, AVCallback<List<LCLKUser>> profilesCallBack) {
     List<LCLKUser> userList = new ArrayList<LCLKUser>();
     for (String userId : userIdList) {
       for (LCLKUser user : partUsers) {
@@ -49,7 +48,7 @@ public class LCLKAppProvider implements LCLiveKitProvider {
         }
       }
     }
-    profilesCallBack.done(userList, null);
+    profilesCallBack.internalDone(userList, null);
   }
 
   @Override

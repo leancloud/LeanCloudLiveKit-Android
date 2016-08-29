@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.leancloud.leancloudlivekit.LCLKProfilesCallBack;
 import cn.leancloud.leancloudlivekit.LCLKUser;
 import cn.leancloud.leancloudlivekit.LCLiveKit;
 import cn.leancloud.leancloudlivekit.LCLiveKitProvider;
@@ -99,18 +98,18 @@ public class LCLKProfileCache {
                                        final AVCallback<List<LCLKUser>> callback) {
     LCLiveKitProvider profileProvider = LCLiveKit.getInstance().getProfileProvider();
     if (null != profileProvider) {
-      profileProvider.fetchProfiles(idList, new LCLKProfilesCallBack() {
-        @Override
-        public void done(List<LCLKUser> userList, Exception e) {
-          if (null != userList) {
-            for (LCLKUser userProfile : userList) {
-              cacheUser(userProfile);
+      profileProvider.fetchProfiles(idList, new AVCallback<List<LCLKUser>>() {
+          @Override
+          protected void internalDone0(List<LCLKUser> lclkUsers, AVException e) {
+            if (null != lclkUsers) {
+              for (LCLKUser userProfile : lclkUsers) {
+                cacheUser(userProfile);
+              }
             }
+            profileList.addAll(lclkUsers);
+            callback.internalDone(profileList, null != e ? new AVException(e) : null);
           }
-          profileList.addAll(userList);
-          callback.internalDone(profileList, null != e ? new AVException(e) : null);
-        }
-      });
+        });
     } else {
       callback.internalDone(null, new AVException(new Throwable("please setProfileProvider first!")));
     }

@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVCallback;
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.im.v2.AVIMConversation;
 import com.avos.avoscloud.im.v2.AVIMException;
 import com.avos.avoscloud.im.v2.AVIMTypedMessage;
@@ -30,7 +32,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import cn.leancloud.leancloudlivekit.LCLiveKit;
-import cn.leancloud.leancloudlivekit.LCLKProfilesCallBack;
 import cn.leancloud.leancloudlivekit.LCLKUser;
 import cn.leancloud.leancloudlivekit.R;
 import cn.leancloud.leancloudlivekit.barrage.LCLKBarrageLayout;
@@ -166,28 +167,29 @@ public class LCLKIMFragment extends Fragment {
 
   private void sendJoinMessage() {
     String clientId = LCLiveKit.getInstance().getCurrentUserId();
-    LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(clientId), new LCLKProfilesCallBack() {
-      @Override
-      public void done(List<LCLKUser> userList, Exception exception) {
-        String userName = "";
-        if (null != userList && userList.size() > 0) {
-          userName = userList.get(0).getUserName();
+
+    LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(clientId), new AVCallback<List<LCLKUser>>() {
+        @Override
+        protected void internalDone0(List<LCLKUser> lclkUsers, AVException e) {
+          String userName = "";
+          if (null != lclkUsers && lclkUsers.size() > 0) {
+            userName = lclkUsers.get(0).getUserName();
+          }
+          if (TextUtils.isEmpty(userName)) {
+            userName = "游客";
+          }
+          LCLKIMStatusMessage message = new LCLKIMStatusMessage();
+          message.setStatusContent(userName + "来了");
+          imConversation.sendMessage(message, null);
         }
-        if (TextUtils.isEmpty(userName)) {
-          userName = "游客";
-        }
-        LCLKIMStatusMessage message = new LCLKIMStatusMessage();
-        message.setStatusContent(userName + "来了");
-        imConversation.sendMessage(message, null);
-      }
-    });
+      });
   }
 
   private void initAnchorInfo() {
     String clientId = LCLiveKit.getInstance().getCurrentUserId();
-    LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(clientId), new LCLKProfilesCallBack() {
+    LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(clientId), new AVCallback<List<LCLKUser>>() {
       @Override
-      public void done(List<LCLKUser> userList, Exception exception) {
+      public void internalDone0(List<LCLKUser> userList, AVException exception) {
         if (null == exception && null != userList && userList.size() > 0) {
           final String avatar = userList.get(0).getAvatarUrl();
           if (!TextUtils.isEmpty(avatar)) {
@@ -197,7 +199,6 @@ public class LCLKIMFragment extends Fragment {
         }
       }
     });
-
   }
 
   private void initIMView() {
@@ -305,14 +306,14 @@ public class LCLKIMFragment extends Fragment {
 
   private void sendGift(final String content) {
     LCLiveKit.getInstance().getProfileProvider().fetchProfiles(
-      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new LCLKProfilesCallBack() {
+      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new AVCallback<List<LCLKUser>>() {
         @Override
-        public void done(List<LCLKUser> userList, Exception exception) {
-          if (exception == null && null != userList && userList.size() > 0) {
+        protected void internalDone0(List<LCLKUser> lclkUsers, AVException e) {
+          if (null == e && null != lclkUsers && lclkUsers.size() > 0) {
             final LCLKGiftMessage message = new LCLKGiftMessage();
             message.setMessageContent(content);
-            message.setName(userList.get(0).getUserName());
-            message.setAvatar(userList.get(0).getAvatarUrl());
+            message.setName(lclkUsers.get(0).getUserName());
+            message.setAvatar(lclkUsers.get(0).getAvatarUrl());
 
             imConversation.sendMessage(message, new AVIMConversationCallback() {
               @Override
@@ -322,20 +323,19 @@ public class LCLKIMFragment extends Fragment {
             });
           }
         }
-      }
-    );
+      });
   }
 
   private void sendBarrage(final String content) {
     LCLiveKit.getInstance().getProfileProvider().fetchProfiles(
-      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new LCLKProfilesCallBack() {
+      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new AVCallback<List<LCLKUser>>() {
         @Override
-        public void done(List<LCLKUser> userList, Exception exception) {
-          if (exception == null && null != userList && userList.size() > 0) {
+        protected void internalDone0(List<LCLKUser> lclkUsers, AVException e) {
+          if (null == e && null != lclkUsers && lclkUsers.size() > 0) {
             final LCLKIMBarrageMessage message = new LCLKIMBarrageMessage();
             message.setMessageContent(content);
-            message.setName(userList.get(0).getUserName());
-            message.setAvatar(userList.get(0).getAvatarUrl());
+            message.setName(lclkUsers.get(0).getUserName());
+            message.setAvatar(lclkUsers.get(0).getAvatarUrl());
             imConversation.sendMessage(message, new AVIMConversationCallback() {
               @Override
               public void done(AVIMException e) {
@@ -344,8 +344,7 @@ public class LCLKIMFragment extends Fragment {
             });
           }
         }
-      }
-    );
+      });
   }
 
   private void addBarrage(LCLKIMBarrageMessage message) {
@@ -382,14 +381,14 @@ public class LCLKIMFragment extends Fragment {
    */
   protected void sendText(final String content) {
     LCLiveKit.getInstance().getProfileProvider().fetchProfiles(
-      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new LCLKProfilesCallBack() {
+      Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new AVCallback<List<LCLKUser>>() {
         @Override
-        public void done(List<LCLKUser> userList, Exception exception) {
-          if (exception == null && null != userList && userList.size() > 0) {
+        protected void internalDone0(List<LCLKUser> lclkUsers, AVException e) {
+          if (null == e && null != lclkUsers && lclkUsers.size() > 0) {
             LCLKIMMessage message = new LCLKIMMessage();
             message.setMessageContent(content);
-            message.setName(userList.get(0).getUserName());
-            message.setAvatar(userList.get(0).getAvatarUrl());
+            message.setName(lclkUsers.get(0).getUserName());
+            message.setAvatar(lclkUsers.get(0).getAvatarUrl());
             itemAdapter.addDataList(Arrays.asList((AVIMTypedMessage) message));
             itemAdapter.notifyDataSetChanged();
             scrollToBottom();
