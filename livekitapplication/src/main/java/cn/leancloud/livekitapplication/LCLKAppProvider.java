@@ -1,5 +1,7 @@
 package cn.leancloud.livekitapplication;
 
+import com.avos.avoscloud.AVCallback;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,5 +50,15 @@ public class LCLKAppProvider implements LCLiveKitProvider {
       }
     }
     profilesCallBack.done(userList, null);
+  }
+
+  @Override
+  public void fetchRecordStream(String liveId, AVCallback<String> streamCallback) {
+    streamCallback.internalDone(null, null);
+  }
+
+  @Override
+  public void fetchPlayStream(String liveId, AVCallback<String> streamCallback) {
+    streamCallback.internalDone("rtmp://live.hkstv.hk.lxdns.com/live/hks" , null);
   }
 }

@@ -1,5 +1,7 @@
 package cn.leancloud.leancloudlivekit;
 
+import com.avos.avoscloud.AVCallback;
+
 import java.util.List;
 
 /**
@@ -16,4 +18,8 @@ public interface LCLiveKitProvider {
    * @param profilesCallBack
    */
   void fetchProfiles(List<String> userIdList, LCLKProfilesCallBack profilesCallBack);
+
+  void fetchRecordStream(String liveId, AVCallback<String> streamCallback);
+
+  void fetchPlayStream(String liveId, AVCallback<String> streamCallback);
 }

@@ -11,11 +11,15 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVCallback;
+import com.avos.avoscloud.AVException;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 import com.pili.pldroid.player.widget.PLVideoView;
 
+import cn.leancloud.leancloudlivekit.LCLiveKit;
+import cn.leancloud.leancloudlivekit.LCLiveKitProvider;
 import cn.leancloud.leancloudlivekit.R;
 
 /**
@@ -27,7 +31,7 @@ public class LCLKPlayFragment extends Fragment {
 
   LinearLayout loadingLayout;
 
-  private String livePath = "";
+  private String livePath;
 
   @Nullable
   @Override
@@ -35,11 +39,6 @@ public class LCLKPlayFragment extends Fragment {
     return inflater.inflate(R.layout.lclk_play_fragment, container, false);
   }
 
-  // TODO 根据 liveId 获取直播地址
-  public void initLive(String liveId) {
-    livePath = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
-    startLive();
-  }
 
   @Override
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -49,9 +48,11 @@ public class LCLKPlayFragment extends Fragment {
 
     getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     videoTextureView.setBufferingIndicator(loadingLayout);
+    startLive(livePath);
   }
 
-  private void startLive() {
+  public void startLive(String livePath) {
+    this.livePath = livePath;
     if (!TextUtils.isEmpty(livePath) && null != videoTextureView) {
       AVOptions options = new AVOptions();
 

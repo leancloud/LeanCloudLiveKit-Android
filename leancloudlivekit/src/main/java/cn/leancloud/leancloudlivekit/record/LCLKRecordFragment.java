@@ -28,7 +28,7 @@ public class LCLKRecordFragment extends Fragment implements CameraStreamingManag
   private CameraStreamingSetting cameraStreamingSetting;
   private View mView;
 
-  private String liveId;
+  private String recordStream;
 
   @Override
   public void onResume() {
@@ -72,7 +72,7 @@ public class LCLKRecordFragment extends Fragment implements CameraStreamingManag
       CameraStreamingManager.EncodingType.SW_VIDEO_WITH_SW_AUDIO_CODEC);
     mediaStreamingManager.setStreamingStateListener(this);
     cameraStreamingSetting = getCameraSetting();
-    setStream("");
+    setStream(recordStream);
   }
 
   @Override
@@ -118,8 +118,9 @@ public class LCLKRecordFragment extends Fragment implements CameraStreamingManag
   }
 
   public void setStream(String recordStream) {
-    initStream(recordStream);
-    if (!TextUtils.isEmpty(recordStream)) {
+    this.recordStream = recordStream;
+    if (!TextUtils.isEmpty(recordStream) && null != mediaStreamingManager) {
+      initStream(recordStream);
       startRecord();
     }
   }

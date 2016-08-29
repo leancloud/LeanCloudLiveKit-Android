@@ -4,7 +4,10 @@ package cn.leancloud.leancloudlivekit.record;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 
+import com.avos.avoscloud.AVCallback;
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.im.v2.AVIMClient;
 import com.avos.avoscloud.im.v2.AVIMConversation;
 import com.avos.avoscloud.im.v2.AVIMConversationQuery;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.leancloud.leancloudlivekit.LCLiveKit;
+import cn.leancloud.leancloudlivekit.LCLiveKitProvider;
 import cn.leancloud.leancloudlivekit.R;
 import cn.leancloud.leancloudlivekit.im.LCLKIMFragment;
 import cn.leancloud.leancloudlivekit.utils.LCLKConstants;
@@ -36,6 +40,34 @@ public class LCLKRecordActivity extends AppCompatActivity {
     lclkRecordFragment = (LCLKRecordFragment) getSupportFragmentManager().findFragmentById(R.id.lclk_record_fragment);
 
     final String liveId = getIntent().getStringExtra(LCLKConstants.LIVE_ID);
+
+    initConversation(liveId);
+    initRecordFragment(liveId);
+  }
+
+  /**
+   * 初始化录制直播的 Fragment
+   * @param liveId
+   */
+  private void initRecordFragment(String liveId) {
+    LCLiveKitProvider provider = LCLiveKit.getInstance().getProfileProvider();
+    if (null != provider) {
+      provider.fetchRecordStream(liveId, new AVCallback<String>() {
+        @Override
+        protected void internalDone0(String s, AVException e) {
+          if (null == e && !TextUtils.isEmpty(s)) {
+            lclkRecordFragment.setStream(s);
+          }
+        }
+      });
+    }
+  }
+
+  /**
+   * 初始化实时通讯的 Fragment
+   * @param liveId
+   */
+  private void initConversation(final String liveId) {
     final AVIMClient client = LCLiveKit.getInstance().getClient();
     AVIMConversationQuery conversationQuery = client.getQuery();
     conversationQuery.whereEqualTo("name", liveId);
@@ -45,22 +77,13 @@ public class LCLKRecordActivity extends AppCompatActivity {
         if (null != list && list.size() > 0) {
           lclkimFragment.setConversation(list.get(0));
         } else {
-          createConversation(client, liveId);
+          client.createConversation(new ArrayList<String>(), liveId, null, false, true, new AVIMConversationCreatedCallback() {
+            @Override
+            public void done(AVIMConversation avimConversation, AVIMException e) {
+              lclkimFragment.setConversation(avimConversation);
+            }
+          });
         }
-      }
-    });
-  }
-
-  //TODO 根据 liveId 获取 stream
-  private void getStreamInfo(String liveId) {
-    lclkRecordFragment.setStream("");
-  }
-
-  private void createConversation(AVIMClient client, String liveId) {
-    client.createConversation(new ArrayList<String>(), liveId, null, false, true, new AVIMConversationCreatedCallback() {
-      @Override
-      public void done(AVIMConversation avimConversation, AVIMException e) {
-        lclkimFragment.setConversation(avimConversation);
       }
     });
   }
