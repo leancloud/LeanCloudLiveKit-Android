@@ -21,6 +21,7 @@ import cn.leancloud.leancloudlivekit.R;
 
 /**
  * Created by wli on 16/8/4.
+ * 负责录制直播的 Fragment
  */
 public class LCLKRecordFragment extends Fragment implements CameraStreamingManager.StreamingStateListener {
 

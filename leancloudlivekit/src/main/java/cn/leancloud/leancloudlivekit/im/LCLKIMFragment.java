@@ -61,6 +61,7 @@ public class LCLKIMFragment extends Fragment {
   SwitchCompat barrageSwitch;
   RecyclerView recyclerView;
   TextView newMessageTipView;
+  LCLKGiftDialogFragment giftDialogFragment;
 
   private boolean isBottom = true;
 
@@ -116,6 +117,9 @@ public class LCLKIMFragment extends Fragment {
         onCloseClick();
       }
     });
+
+    initGift();
+    initGiftDialog();
   }
 
   @Override
@@ -153,6 +157,37 @@ public class LCLKIMFragment extends Fragment {
     });
   }
 
+  private void initGift() {
+    LCLKGiftManager giftManager = LCLKGiftManager.getInstance();
+    giftManager.clearGiftList();
+    giftManager.addGiftItem(new LCLKGiftItem(1, "", R.mipmap.lclk_im_gift_1));
+    giftManager.addGiftItem(new LCLKGiftItem(2, "", R.mipmap.lclk_im_gift_2));
+    giftManager.addGiftItem(new LCLKGiftItem(3, "", R.mipmap.lclk_im_gift_3));
+    giftManager.addGiftItem(new LCLKGiftItem(4, "", R.mipmap.lclk_im_gift_4));
+    giftManager.addGiftItem(new LCLKGiftItem(5, "", R.mipmap.lclk_im_gift_5));
+    giftManager.addGiftItem(new LCLKGiftItem(6, "", R.mipmap.lclk_im_gift_6));
+    giftManager.addGiftItem(new LCLKGiftItem(7, "", R.mipmap.lclk_im_gift_7));
+    giftManager.addGiftItem(new LCLKGiftItem(8, "", R.mipmap.lclk_im_gift_8));
+  }
+
+  private void initGiftDialog() {
+    giftDialogFragment = new LCLKGiftDialogFragment();
+    giftDialogFragment.setOnDismissListener(new DialogInterface.OnDismissListener() {
+      @Override
+      public void onDismiss(DialogInterface dialog) {
+        inputLayout.setVisibility(View.VISIBLE);
+      }
+    });
+
+    LCLKGiftManager giftManager = LCLKGiftManager.getInstance();
+    List<LCLKGiftItem> giftItemList = giftManager.getGiftList();
+    List<View> viewList = new ArrayList<>();
+    for (LCLKGiftItem giftItem : giftItemList) {
+      viewList.add(getGiftItem(giftItem));
+    }
+    giftDialogFragment.setViews(viewList);
+  }
+
   public void setConversation(final AVIMConversation conversation) {
     imConversation = conversation;
     imConversation.join(new AVIMConversationCallback() {
@@ -169,20 +204,20 @@ public class LCLKIMFragment extends Fragment {
     String clientId = LCLiveKit.getInstance().getCurrentUserId();
 
     LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(clientId), new AVCallback<List<LCLKUser>>() {
-        @Override
-        protected void internalDone0(List<LCLKUser> lclkUsers, AVException e) {
-          String userName = "";
-          if (null != lclkUsers && lclkUsers.size() > 0) {
-            userName = lclkUsers.get(0).getUserName();
-          }
-          if (TextUtils.isEmpty(userName)) {
-            userName = "游客";
-          }
-          LCLKIMStatusMessage message = new LCLKIMStatusMessage();
-          message.setStatusContent(userName + "来了");
-          imConversation.sendMessage(message, null);
+      @Override
+      protected void internalDone0(List<LCLKUser> lclkUsers, AVException e) {
+        String userName = "";
+        if (null != lclkUsers && lclkUsers.size() > 0) {
+          userName = lclkUsers.get(0).getUserName();
         }
-      });
+        if (TextUtils.isEmpty(userName)) {
+          userName = "游客";
+        }
+        LCLKIMStatusMessage message = new LCLKIMStatusMessage();
+        message.setStatusContent(userName + "来了");
+        imConversation.sendMessage(message, null);
+      }
+    });
   }
 
   private void initAnchorInfo() {
@@ -235,38 +270,23 @@ public class LCLKIMFragment extends Fragment {
   }
 
   private void onGiftClick() {
-    LCLKGiftDialogFragment giftDialogFragment = new LCLKGiftDialogFragment();
-    giftDialogFragment.setOnDismissListener(new DialogInterface.OnDismissListener() {
-      @Override
-      public void onDismiss(DialogInterface dialog) {
-        inputLayout.setVisibility(View.VISIBLE);
-      }
-    });
     inputLayout.setVisibility(View.INVISIBLE);
-
-    List<View> viewList = new ArrayList<>();
-    viewList.add(getGiftItem());
-    viewList.add(getGiftItem());
-    viewList.add(getGiftItem());
-    viewList.add(getGiftItem());
-    viewList.add(getGiftItem());
-    viewList.add(getGiftItem());
-    viewList.add(getGiftItem());
-    viewList.add(getGiftItem());
-    viewList.add(getGiftItem());
-    giftDialogFragment.setViews(viewList);
     giftDialogFragment.show(getFragmentManager(), "dialog");
   }
 
-  private View getGiftItem() {
-    View giftItem = getActivity().getLayoutInflater().inflate(R.layout.lclk_gift_item, null);
-    giftItem.setOnClickListener(new View.OnClickListener() {
+  private View getGiftItem(final LCLKGiftItem giftItem) {
+    View giftItemView = getActivity().getLayoutInflater().inflate(R.layout.lclk_gift_item, null);
+    ImageView iconView = (ImageView) giftItemView.findViewById(R.id.live_gift_item_icon_view);
+    TextView nameView = (TextView) giftItemView.findViewById(R.id.live_gift_item_name_view);
+    iconView.setImageResource(giftItem.giftResource);
+    nameView.setText(giftItem.giftName);
+    giftItemView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        sendGift("Gift");
+        sendGift(giftItem);
       }
     });
-    return giftItem;
+    return giftItemView;
   }
 
   private void onNewMessageClick() {
@@ -304,16 +324,17 @@ public class LCLKIMFragment extends Fragment {
     layoutManager.scrollToPositionWithOffset(itemAdapter.getItemCount() - 1, 0);
   }
 
-  private void sendGift(final String content) {
+  private void sendGift(final LCLKGiftItem giftItem) {
     LCLiveKit.getInstance().getProfileProvider().fetchProfiles(
       Arrays.asList(LCLiveKit.getInstance().getCurrentUserId()), new AVCallback<List<LCLKUser>>() {
         @Override
         protected void internalDone0(List<LCLKUser> lclkUsers, AVException e) {
           if (null == e && null != lclkUsers && lclkUsers.size() > 0) {
             final LCLKGiftMessage message = new LCLKGiftMessage();
-            message.setMessageContent(content);
+            message.setMessageContent(giftItem.giftName);
             message.setName(lclkUsers.get(0).getUserName());
             message.setAvatar(lclkUsers.get(0).getAvatarUrl());
+            message.setGiftIndex(giftItem.giftMessageIndex);
 
             imConversation.sendMessage(message, new AVIMConversationCallback() {
               @Override
@@ -365,7 +386,7 @@ public class LCLKIMFragment extends Fragment {
     TextView nameView = (TextView) view.findViewById(R.id.live_barrage_gift_name_view);
     TextView numberView = (TextView) view.findViewById(R.id.live_barrage_gift_number_view);
 
-    avatarView.setImageResource(R.mipmap.lclk_gift_demo);
+    avatarView.setImageResource(LCLKGiftManager.getInstance().getGiftItem(message.getGiftIndex()).giftResource);
     nameView.setText(message.getName());
     if (message.getNumber() > 0) {
       numberView.setText(message.getNumber() + "");

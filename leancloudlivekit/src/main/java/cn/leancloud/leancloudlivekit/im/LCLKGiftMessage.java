@@ -11,9 +11,13 @@ import com.avos.avoscloud.im.v2.AVIMMessageType;
 public class LCLKGiftMessage extends LCLKIMMessage {
 
   public static final String LIVE_GIFT_MESSAGE_NUMBER_KEY = "number";
+  public static final String LIVE_GIFT_MESSAGE_INDEX_KEY = "index";
 
   @AVIMMessageField(name = LIVE_GIFT_MESSAGE_NUMBER_KEY)
   private int number;
+
+  @AVIMMessageField(name = LIVE_GIFT_MESSAGE_INDEX_KEY)
+  private int giftIndex;
 
   public LCLKGiftMessage() {
     super();
@@ -27,5 +31,14 @@ public class LCLKGiftMessage extends LCLKIMMessage {
 
   public void setNumber(int number) {
     this.number = number;
+  }
+
+
+  public int getGiftIndex() {
+    return giftIndex;
+  }
+
+  public void setGiftIndex(int giftIndex) {
+    this.giftIndex = giftIndex;
   }
 }

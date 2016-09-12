@@ -10,9 +10,9 @@
 
     <cn.leancloud.leancloudlivekit.im.LCLKRoundCornerImageView
         android:id="@+id/im_chat_item_text_avatar_view"
-        android:src="@mipmap/lclk_default_avatar_icon"
         android:layout_width="@dimen/lclk_im_chat_item_avatar_width"
-        android:layout_height="@dimen/lclk_im_chat_item_avatar_width"/>
+        android:layout_height="@dimen/lclk_im_chat_item_avatar_width"
+        android:src="@mipmap/lclk_default_avatar_icon"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -25,9 +25,9 @@
             android:id="@+id/im_chat_item_text_name_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/lclk_textsize_smaller"
+            android:text="name"
             android:textColor="@color/lclk_im_chat_item_name_color"
-            android:text="name"/>
+            android:textSize="@dimen/lclk_textsize_smaller"/>
 
         <TextView
             android:id="@+id/im_chat_item_text_content_view"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="content"
-            android:textSize="@dimen/lclk_textsize_smaller"
-            android:textColor="@color/lclk_im_chat_item_content_color"/>
+            android:textColor="@color/lclk_im_chat_item_content_color"
+            android:textSize="@dimen/lclk_textsize_smaller"/>
     </LinearLayout>
 </LinearLayout>

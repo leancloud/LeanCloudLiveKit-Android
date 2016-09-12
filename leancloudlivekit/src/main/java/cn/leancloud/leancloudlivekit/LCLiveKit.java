@@ -11,6 +11,7 @@ import com.avos.avoscloud.im.v2.AVIMException;
 import com.avos.avoscloud.im.v2.AVIMMessageManager;
 import com.avos.avoscloud.im.v2.AVIMTypedMessage;
 import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
+import com.pili.pldroid.streaming.StreamingEnv;
 
 import cn.leancloud.leancloudlivekit.handler.LCLKClientEventHandler;
 import cn.leancloud.leancloudlivekit.handler.LCLKConversationHandler;
@@ -54,6 +55,8 @@ public class LCLiveKit {
     if (TextUtils.isEmpty(appKey)) {
       throw new IllegalArgumentException("appKey can not be empty!");
     }
+
+    StreamingEnv.init(context);
 
     AVOSCloud.initialize(context.getApplicationContext(), appId, appKey);
 

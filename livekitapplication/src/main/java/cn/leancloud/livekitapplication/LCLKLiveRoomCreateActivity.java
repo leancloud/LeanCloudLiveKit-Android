@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.SaveCallback;
+import com.pili.pldroid.streaming.widget.AspectFrameLayout;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -58,6 +59,10 @@ public class LCLKLiveRoomCreateActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.lclk_live_room_create_activity);
     ButterKnife.bind(this);
+    if (TextUtils.isEmpty(LCLiveKit.getInstance().getCurrentUserId())) {
+      Toast.makeText(this, "请先执行登陆操作！", Toast.LENGTH_SHORT).show();
+      finish();
+    }
   }
 
   @OnClick(R.id.live_channle_start_iv_conver)

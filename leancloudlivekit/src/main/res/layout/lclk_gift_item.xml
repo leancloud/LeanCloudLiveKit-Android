@@ -9,7 +9,6 @@
         android:id="@+id/live_gift_item_icon_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/lclk_gift_demo"
         android:layout_gravity="center_horizontal"/>
 
     <TextView

@@ -20,11 +20,9 @@ public class LCLKApplication extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
-    StreamingEnv.init(getApplicationContext());
     LCLiveKit.getInstance().setProfileProvider(LCLKAppProvider.getInstance());
     LCLiveKit.getInstance().init(getApplicationContext(), APP_ID, APP_KEY);
     AVOSCloud.setDebugLogEnabled(true);
     AVObject.registerSubclass(LCLiveRoom.class);
   }
-
 }

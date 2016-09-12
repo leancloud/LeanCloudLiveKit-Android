@@ -26,6 +26,8 @@ import cn.leancloud.leancloudlivekit.utils.LCLKConstants;
 
 /**
  * Created by wli on 16/8/2.
+ * 负责录制直播的页面
+ * 只需要开发者传入 LCLKConstants.LIVE_ID 就可以
  */
 public class LCLKRecordActivity extends AppCompatActivity {
 
