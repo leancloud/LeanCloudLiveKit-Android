@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="lclk_color_primary">#121E34</color>
+    <color name="lclk_color_primary_dark">#121E34</color>
+    <color name="lclk_color_accent">@color/lclk_common_blue</color>
+
+    <color name="lclk_common_blue">#2c97e8</color>
+    <color name="lclk_common_gray">#898989</color>
+    <color name="lclk_commom_read">#ff0000</color>
+
+    <color name="lclk_im_gift_btn_bg">#664AE2</color>
+
+    <color name="lclk_im_chat_item_name_color">#D1D1D1</color>
+    <color name="lclk_im_chat_item_content_color">@android:color/white</color>
+    <color name="lclk_im_chat_item_tip_color">#a8FFFFFF</color>
+    <color name="lclk_live_gift_dialog_bg">@color/lclk_color_primary</color>
+</resources>

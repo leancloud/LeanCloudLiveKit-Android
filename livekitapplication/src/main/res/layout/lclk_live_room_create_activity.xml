@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lclk_color_primary"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+        <ImageView
+            android:id="@+id/live_channle_start_iv_conver"
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/start_channel_image_bg"
+            android:clickable="true"
+            android:padding="2dp"
+            android:scaleType="centerInside"
+            android:src="@mipmap/lclk_live_add_image"/>
+
+        <EditText
+            android:id="@+id/live_channle_start_et_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/edittext_bg"
+            android:textAppearance="@style/LCLKTextAppearance.Small"
+            android:hint="@string/lclk_live_room_create_title_hint"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/lclk_live_room_hint_text_color"/>
+
+        <EditText
+            android:id="@+id/live_channle_start_et_topic"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_bg"
+            android:hint="@string/lclk_live_room_create_topic_hint"
+            android:textAppearance="@style/LCLKTextAppearance.Small"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/lclk_live_room_hint_text_color"/>
+
+        <TextView
+            android:id="@+id/live_channle_start_tv_start"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/start_channel_btn_bg"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="开始直播"
+            android:textColor="@color/lclk_live_room_action_color"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/lclk_im_profile_margin"
+                android:paddingTop="@dimen/lclk_im_profile_margin">
+
+    <cn.leancloud.leancloudlivekit.im.LCLKRoundCornerImageView
+        android:id="@+id/lclk_live_im_personal_avatar_view"
+        android:layout_width="@dimen/lclk_im_profile_avatar_width"
+        android:layout_height="@dimen/lclk_im_profile_avatar_width"
+        android:src="@mipmap/lclk_default_avatar_icon"/>
+
+    <TextView
+        android:id="@+id/lclk_live_im_personal_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lclk_live_im_personal_avatar_view"
+        android:layout_marginLeft="@dimen/lclk_im_profile_margin"
+        android:layout_toRightOf="@+id/lclk_live_im_personal_avatar_view"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/lclk_textsize_small"/>
+
+    <ImageView
+        android:id="@+id/lclk_live_im_personal_close_view"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside"
+        android:src="@mipmap/lclk_im_close"/>
+</RelativeLayout>

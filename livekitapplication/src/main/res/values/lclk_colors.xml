@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lclk_divider_line_color">#979797</color>
+
+    <color name="lclk_live_room_edit_line_color">#979797</color>
+    <color name="lclk_live_room_hint_text_color">#42ffffff</color>
+    <color name="lclk_live_room_action_color">#00F0F8</color>
+    <color name="lclk_live_room_item_imageview_bg">#4A4A4A</color>
+    <color name="lclk_live_room_item_content_bg">#2C2F30</color>
+    <color name="lclk_live_room_item_tv_color">#78ffffff</color>
+</resources>

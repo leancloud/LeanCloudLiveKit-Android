@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/live_im_input_layout"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:orientation="horizontal"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp">
+
+    <FrameLayout
+        android:layout_width="80dp"
+        android:layout_height="35dp">
+
+        <TextView
+            android:id="@+id/live_im_input_gift_view"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:background="@drawable/lclk_im_gift_bg"
+            android:clickable="true"
+            android:drawableLeft="@mipmap/lclk_star"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/lclk_im_gift"
+            android:textColor="@android:color/white"/>
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/live_im_input_barrage_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/lclk_im_barrage"
+            android:textColor="@android:color/white"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/live_im_input_input_view"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:background="@drawable/lclk_im_input_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/live_im_input_send_view"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/lclk_im_input_bg"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="发送"
+        android:textColor="@android:color/white"/>
+</LinearLayout>

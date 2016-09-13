@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">livekitapplication</string>
+    
+    <string name="lclk_live_room">直播间</string>
+    <string name="lclk_start_live">开始直播</string>
+    <string name="lclk_login">登陆</string>
+
+    <string name="lclk_live_room_create_title_hint">输入标题吸引更多粉丝</string>
+    <string name="lclk_live_room_create_topic_hint"># 添加话题</string>
+
+</resources>
