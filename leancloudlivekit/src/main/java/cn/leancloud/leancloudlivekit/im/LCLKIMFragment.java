@@ -35,6 +35,7 @@ import cn.leancloud.leancloudlivekit.LCLiveKit;
 import cn.leancloud.leancloudlivekit.LCLKUser;
 import cn.leancloud.leancloudlivekit.R;
 import cn.leancloud.leancloudlivekit.barrage.LCLKBarrageLayout;
+import cn.leancloud.leancloudlivekit.utils.LCLKConstants;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -221,8 +222,8 @@ public class LCLKIMFragment extends Fragment {
   }
 
   private void initAnchorInfo() {
-    String clientId = LCLiveKit.getInstance().getCurrentUserId();
-    LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(clientId), new AVCallback<List<LCLKUser>>() {
+    String anchorId = getActivity().getIntent().getStringExtra(LCLKConstants.ANCHOR_ID);
+    LCLiveKit.getInstance().getProfileProvider().fetchProfiles(Arrays.asList(anchorId), new AVCallback<List<LCLKUser>>() {
       @Override
       public void internalDone0(List<LCLKUser> userList, AVException exception) {
         if (null == exception && null != userList && userList.size() > 0) {

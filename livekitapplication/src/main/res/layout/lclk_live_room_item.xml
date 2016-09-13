@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/live_room_item_content_layout"
-        android:background="@color/lclk_live_room_item_imageview_bg"/>
+        android:background="@color/lclk_live_room_item_imageview_bg"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/live_room_item_status_view"

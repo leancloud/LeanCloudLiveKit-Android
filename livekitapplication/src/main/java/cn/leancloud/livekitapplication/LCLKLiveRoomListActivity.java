@@ -103,6 +103,7 @@ public class LCLKLiveRoomListActivity extends AppCompatActivity {
   public void onEvent(LCLKLiveRoomItemClickEvent event) {
     Intent intent = new Intent(LCLKLiveRoomListActivity.this, LCLKPlayActivity.class);
     intent.putExtra(LCLKConstants.LIVE_ID, event.liveRoom.getLiveId());
+    intent.putExtra(LCLKConstants.ANCHOR_ID, event.liveRoom.getAnchorId());
     startActivity(intent);
   }
 }
