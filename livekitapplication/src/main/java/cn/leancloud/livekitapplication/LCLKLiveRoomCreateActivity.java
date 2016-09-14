@@ -131,6 +131,7 @@ public class LCLKLiveRoomCreateActivity extends AppCompatActivity {
         finish();
         Intent intent = new Intent(LCLKLiveRoomCreateActivity.this, LCLKRecordActivity.class);
         intent.putExtra(LCLKConstants.LIVE_ID, liveId);
+        intent.putExtra(LCLKConstants.ANCHOR_ID, anchorId);
         startActivity(intent);
       }
     });

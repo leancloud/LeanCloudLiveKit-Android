@@ -21,4 +21,5 @@ public class LCLKConstants {
   public static final String LIVE_CONVERSATION_KEY = getPrefixConstant("live_conversation_key");
 
   public static final String LIVE_ID = getPrefixConstant("live_id");
+  public static final String ANCHOR_ID = getPrefixConstant("anchor_id");
 }
