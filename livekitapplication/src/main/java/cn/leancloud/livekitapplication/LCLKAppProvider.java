@@ -36,7 +36,6 @@ public class LCLKAppProvider implements LCLiveKitProvider {
     partUsers.add(new LCLKUser("Bob", "Bob", "http://www.avatarsdb.com/avatars/bath_bob.jpg"));
   }
 
-
   @Override
   public void fetchProfiles(List<String> userIdList, AVCallback<List<LCLKUser>> profilesCallBack) {
     List<LCLKUser> userList = new ArrayList<LCLKUser>();
@@ -53,11 +52,13 @@ public class LCLKAppProvider implements LCLiveKitProvider {
 
   @Override
   public void fetchRecordStream(String liveId, AVCallback<String> streamCallback) {
+    //TODO:根据liveId获取对应的推流地址
     streamCallback.internalDone(null, null);
   }
 
   @Override
   public void fetchPlayStream(String liveId, AVCallback<String> streamCallback) {
+    //TODO:根据liveId获取对应的直播地址
     streamCallback.internalDone("rtmp://live.hkstv.hk.lxdns.com/live/hks" , null);
   }
 }

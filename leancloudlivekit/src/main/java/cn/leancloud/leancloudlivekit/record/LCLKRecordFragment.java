@@ -115,15 +115,24 @@ public class LCLKRecordFragment extends Fragment implements CameraStreamingManag
       case CameraStreamingManager.STATE.DISCONNECTED:
         // The socket is broken while streaming
         break;
+      case CameraStreamingManager.STATE.INVALID_STREAMING_URL:
+        // invalid streaming url
+        break;
     }
   }
 
   public void setStream(String recordStream) {
     this.recordStream = recordStream;
-    if (!TextUtils.isEmpty(recordStream) && null != mediaStreamingManager) {
-      initStream(recordStream);
-      startRecord();
-    }
+    /**
+     * add by zzhong
+     * 必须先调用MediaStreamingManager.prepare 函数，不然调用MediaStreamingManager.resume()
+     * 函数会报错，所以无论recordStream值是什么都应该调用initStream，注意空字符串即可。如果recordStream
+     * 不符合规范，会在onStateChanged发送INVALID_STREAMING_URL消息。
+     */
+    //if (!TextUtils.isEmpty(recordStream) && null != mediaStreamingManager) {
+    initStream(recordStream == null ? "" : recordStream);
+    startRecord();
+    //}
   }
 
   private void initStream(String recordStream) {
