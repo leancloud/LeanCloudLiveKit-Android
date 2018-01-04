@@ -89,6 +89,10 @@ public class LCLKGiftDialogFragment extends DialogFragment {
     if (null != pagerAdapter) {
       final int screenWidth = getResources().getDisplayMetrics().widthPixels;
       final int dialogHeight = getResources().getDimensionPixelOffset(R.dimen.lclk_live_gift_dialog_height);
+      if(currentLayout != null) {
+        currentLayout.removeAllViews();
+        currentLayout = null;
+      }
       for (View view : giftViewList) {
         if (null == currentLayout || currentLayout.getChildCount() >= pageWidth * pagerHeight) {
           currentLayout = new GridLayout(view.getContext());
