@@ -48,12 +48,21 @@ public class LCLKLiveRoomItemHolder extends LCLKCommonViewHolder<LCLiveRoom> {
   @Override
   public void bindData(LCLiveRoom liveRoom) {
     this.liveRoom = liveRoom;
-    Picasso.with(getContext()).load(liveRoom.getConver().getUrl()).into(backgroudView);
+    if(liveRoom.getConver() != null) {
+      Picasso.with(getContext()).load(liveRoom.getConver().getUrl()).into(backgroudView);
+    }else {
+      Picasso.with(getContext()).load(R.mipmap.lclk_live_add_image).into(backgroudView);
+    }
     LCLKProfileCache.getInstance().getCachedUser(liveRoom.getAnchorId(), new AVCallback<LCLKUser>() {
       @Override
       protected void internalDone0(LCLKUser lclkUser, AVException e) {
-        nameView.setText(lclkUser.getUserName());
-        Picasso.with(getContext()).load(lclkUser.getAvatarUrl()).into(avatarView);
+        if(lclkUser != null) {
+          nameView.setText(lclkUser.getUserName());
+          Picasso.with(getContext()).load(lclkUser.getAvatarUrl()).into(avatarView);
+        }else {
+          nameView.setText(R.string.lclk_live_room_unknow_name);
+          Picasso.with(getContext()).load(R.mipmap.ic_launcher).into(avatarView);
+        }
       }
     });
     descriptionView.setText(liveRoom.getTitle() + " #" + liveRoom.getTopic());

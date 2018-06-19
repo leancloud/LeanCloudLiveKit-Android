@@ -26,6 +26,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.UUID;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -92,7 +93,8 @@ public class LCLKLiveRoomCreateActivity extends AppCompatActivity {
     final String title = titleView.getText().toString();
     final String topic = topicView.getText().toString();
     final String clientId = LCLiveKit.getInstance().getCurrentUserId();
-    final String liveId = clientId;
+    //TODO:自己定义直播间ID，保证每个直播间ID唯一即可
+    final String liveId = UUID.randomUUID().toString();
     final String anchorId = clientId;
 
     if (TextUtils.isEmpty(title.trim())) {
