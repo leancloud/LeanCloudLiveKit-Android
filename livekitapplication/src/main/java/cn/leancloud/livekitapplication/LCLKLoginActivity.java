@@ -12,7 +12,7 @@ import com.avos.avoscloud.im.v2.AVIMClient;
 import com.avos.avoscloud.im.v2.AVIMException;
 import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.leancloud.leancloudlivekit.LCLiveKit;
@@ -23,7 +23,7 @@ import cn.leancloud.leancloudlivekit.LCLiveKit;
  */
 public class LCLKLoginActivity extends AppCompatActivity {
 
-  @Bind(R.id.activity_login_et_username)
+  @BindView(R.id.activity_login_et_username)
   EditText nameView;
 
   @Override

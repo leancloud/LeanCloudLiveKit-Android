@@ -24,7 +24,7 @@ public class LCLKConversationHandler extends AVIMConversationEventHandler {
   private LCLKConversationHandler() {
   }
 
-  @Override
+//  @Override
   public void onOfflineMessagesUnread(AVIMClient client, AVIMConversation conversation, int unreadCount) {
   }
 

@@ -16,7 +16,7 @@ import com.avos.avoscloud.FindCallback;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.leancloud.leancloudlivekit.im.LCLKCommonListAdapter;
 import cn.leancloud.leancloudlivekit.play.LCLKPlayActivity;
@@ -29,10 +29,10 @@ import de.greenrobot.event.EventBus;
  */
 public class LCLKLiveRoomListActivity extends AppCompatActivity {
 
-  @Bind(R.id.refreshable_list_srl)
+  @BindView(R.id.refreshable_list_srl)
   SwipeRefreshLayout refreshLayout;
 
-  @Bind(R.id.refreshable_list_recycler)
+  @BindView(R.id.refreshable_list_recycler)
   RecyclerView recyclerView;
 
   GridLayoutManager layoutManager;

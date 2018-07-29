@@ -28,7 +28,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.UUID;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.leancloud.leancloudlivekit.LCLiveKit;
@@ -41,16 +41,16 @@ import cn.leancloud.leancloudlivekit.utils.LCLKConstants;
  */
 public class LCLKLiveRoomCreateActivity extends AppCompatActivity {
 
-  @Bind(R.id.live_channle_start_et_title)
+  @BindView(R.id.live_channle_start_et_title)
   EditText titleView;
 
-  @Bind(R.id.live_channle_start_et_topic)
+  @BindView(R.id.live_channle_start_et_topic)
   EditText topicView;
 
-  @Bind(R.id.live_channle_start_iv_conver)
+  @BindView(R.id.live_channle_start_iv_conver)
   ImageView converView;
 
-  @Bind(R.id.live_channle_start_tv_start)
+  @BindView(R.id.live_channle_start_tv_start)
   TextView startView;
 
   private String localCameraPath;
